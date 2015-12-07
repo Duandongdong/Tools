@@ -1,0 +1,5 @@
+//include ':sample', ':library'
+include ':CommUtil_Library'
+project(':CommUtil_Library').projectDir = new File(settingsDir, 'library')
+include ':CommUtil_Sample'
+project(':CommUtil_Sample').projectDir = new File(settingsDir, 'sample')

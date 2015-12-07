@@ -1,0 +1,40 @@
+apply plugin: 'com.android.library'
+
+android {
+    publishNonDefault true
+
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+    }
+    buildTypes {
+        debug {
+            debuggable true
+        }
+        release {
+            debuggable false
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+
+    //    compile 'com.android.support:appcompat-v7:23.1.0'
+    //    compile 'com.android.support:support-v4:23.1.0'
+    compile 'com.android.support:support-v13:23.1.1'
+    //    compile 'com.android.support:design:23.1.0'
+    compile 'com.jakewharton:butterknife:7.0.1'
+
+    releaseCompile project(path: ':CommUtil_Library', configuration: 'release')
+    debugCompile project(path: ':CommUtil_Library', configuration: 'debug')
+
+    testCompile 'junit:junit:4.12'
+}
