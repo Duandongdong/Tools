@@ -55,7 +55,7 @@
 // Please refer to the accompanying article at 
 // http://developer.motorola.com/docs/using_the_advanced_encryption_standard_in_android/
 
-package cn.czgj.majordomo.base.network.http;
+package com.baigu.network.http;
 
 // A tutorial guide to using AES encryption in Android
 // First we generate a 256 bit secret key; then we use that secret key to AES encrypt a plaintext message.

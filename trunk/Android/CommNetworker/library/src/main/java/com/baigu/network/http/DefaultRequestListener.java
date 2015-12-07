@@ -1,5 +1,5 @@
 
-package cn.czgj.majordomo.base.network.http;
+package com.baigu.network.http;
 
 import com.octo.android.robospice.persistence.exception.SpiceException;
 import com.octo.android.robospice.request.listener.RequestProgress;

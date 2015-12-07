@@ -1,5 +1,5 @@
 
-package cn.czgj.majordomo.base.network.http;
+package com.baigu.network.http;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
