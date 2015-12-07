@@ -32,7 +32,7 @@ public class BitmapFragment extends TitleBaseFragment {
         imageView.setLayoutParams(new LinearLayout.LayoutParams(vwidth, vheight));
 
         ScaleType scaleType = ScaleType.FIT_CENTER;
-        Bitmap src = BitmapFactory.decodeResource(getResources(), R.mipmap.pic2);
+        Bitmap src = BitmapFactory.decodeResource(getResources(), R.drawable.pic2);
         Matrix matrix = configureBounds(src, vwidth, vheight, ScaleType.FIT_END, new Matrix());
 
         RectF srcRectF = new RectF(0, 0, 480, 360);
