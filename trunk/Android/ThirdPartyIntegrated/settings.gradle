@@ -1,0 +1,26 @@
+//include ':sample', ':library'
+include ':ThirdPartyIntegrated_Library'
+project(':ThirdPartyIntegrated_Library').projectDir = new File(settingsDir, 'library')
+include ':ThirdPartyIntegrated_Sample'
+project(':ThirdPartyIntegrated_Sample').projectDir = new File(settingsDir, 'sample')
+
+
+include ':CommUtil_Library'
+project(':CommUtil_Library').projectDir = new File(settingsDir, '../CommUtil/library')
+include ':CommUtil_Sample'
+project(':CommUtil_Sample').projectDir = new File(settingsDir, '../CommUtil/sample')
+
+include ':CommUIKit_Library'
+project(':CommUIKit_Library').projectDir = new File(settingsDir, '../CommUIKit/library')
+include ':CommUIKit_Sample'
+project(':CommUIKit_Sample').projectDir = new File(settingsDir, '../CommUIKit/sample')
+
+include ':CommNetworker_Library'
+project(':CommNetworker_Library').projectDir = new File(settingsDir, '../CommNetworker/library')
+include ':CommNetworker_Sample'
+project(':CommNetworker_Sample').projectDir = new File(settingsDir, '../CommNetworker/sample')
+
+include ':CommDataPersist_Library'
+project(':CommDataPersist_Library').projectDir = new File(settingsDir, '../CommDataPersist/library')
+include ':CommDataPersist_Sample'
+project(':CommDataPersist_Sample').projectDir = new File(settingsDir, '../CommDataPersist/sample')
