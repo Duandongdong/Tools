@@ -51,7 +51,7 @@ public class SaveBitmapActivity extends Activity {
      */
     public void save(View v) {
         Resources res = getResources();
-        Bitmap bitmap = BitmapFactory.decodeResource(res, R.mipmap.ic_acache_img_test);
+        Bitmap bitmap = BitmapFactory.decodeResource(res, R.drawable.ic_acache_img_test);
         mCache.put("testBitmap", bitmap);
     }
 

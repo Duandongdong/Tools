@@ -51,7 +51,7 @@ public class SaveDrawableActivity extends Activity {
 	 */
 	public void save(View v) {
 		Resources res = getResources();
-		Drawable drawable = res.getDrawable(R.mipmap.ic_acache_img_test);
+		Drawable drawable = res.getDrawable(R.drawable.ic_acache_img_test);
 		mCache.put("testDrawable", drawable);
 	}
 
