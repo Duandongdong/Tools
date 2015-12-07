@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:contentDescription="@null"
-        android:src="@mipmap/ic_acache_img_test" />
+        android:src="@drawable/ic_acache_img_test" />
 
     <TextView
         android:layout_width="match_parent"
