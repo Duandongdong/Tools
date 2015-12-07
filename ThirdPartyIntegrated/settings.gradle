@@ -14,6 +14,10 @@ include ':CommUIKit_Library'
 project(':CommUIKit_Library').projectDir = new File(settingsDir, '../CommUIKit/library')
 include ':CommUIKit_Sample'
 project(':CommUIKit_Sample').projectDir = new File(settingsDir, '../CommUIKit/sample')
+include ':CommUIKit_PagerSample'
+project(':CommUIKit_PagerSample').projectDir = new File(settingsDir, '../CommUIKit/pagersample')
+include ':CommUIKit_PtrSample'
+project(':CommUIKit_PtrSample').projectDir = new File(settingsDir, '../CommUIKit/ptrsample')
 
 include ':CommNetworker_Library'
 project(':CommNetworker_Library').projectDir = new File(settingsDir, '../CommNetworker/library')
