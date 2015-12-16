@@ -59,6 +59,8 @@ public class FloatingExpandableListView extends XExpandableListView {
     private OnScrollFloatingGroupListener mOnScrollFloatingGroupListener;
     private ExpandableListView.OnGroupClickListener mOnGroupClickListener;
 
+
+
     private int mWidthMeasureSpec;
 
     // An AttachInfo instance is added to the FloatingGroupView in order to have proper touch event handling
