@@ -1,6 +1,5 @@
 package com.baigu.util;
 
-import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.app.ActivityManager.RunningTaskInfo;
@@ -10,9 +9,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
-import android.os.IBinder;
 import android.text.TextUtils;
-import android.view.inputmethod.InputMethodManager;
 
 import java.util.List;
 
@@ -84,32 +81,6 @@ public class CommAppUtils {
         return false;
     }
 
-    /**
-     * 隐藏键盘
-     *
-     * @param context
-     * @param token
-     */
-    public static void hideSoftPad(Context context, IBinder token) {
-        InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(token, InputMethodManager.HIDE_NOT_ALWAYS);
-    }
-
-    /**
-     * 隐藏软键盘
-     *
-     * @param activity
-     * @return
-     */
-    public static final boolean hideSoftPad(Activity activity) {
-        if (activity.getCurrentFocus() != null) {
-            return ((InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE))
-                    .hideSoftInputFromWindow(
-                            activity.getCurrentFocus().getWindowToken(),
-                            InputMethodManager.HIDE_NOT_ALWAYS);
-        }
-        return false;
-    }
 
     /**
      * 接口请求失败信息
