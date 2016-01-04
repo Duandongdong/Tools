@@ -1,5 +1,10 @@
 package com.baigu.util;
 
+import android.content.Context;
+import android.os.Build;
+import android.telephony.TelephonyManager;
+import android.text.TextUtils;
+
 /**
  * SystemUtils
  */
@@ -34,4 +39,54 @@ public class SystemUtils {
         int availableProcessors = 2 * Runtime.getRuntime().availableProcessors() + 1;
         return availableProcessors > max ? max : availableProcessors;
     }
+
+    /**
+     * 获取IMSI号
+     */
+    public static String getIMSI(Context context) {
+        TelephonyManager mTelephonyMgr = (TelephonyManager) context
+                .getSystemService(Context.TELEPHONY_SERVICE);
+        String imsi = mTelephonyMgr.getSubscriberId();
+        if (TextUtils.isEmpty(imsi)) {
+            imsi = "000000000000000";
+        }
+        return imsi;
+    }
+
+    /**
+     * 获取 IMEI 号
+     *
+     * @param context
+     * @return
+     */
+    public static String getIMEI(Context context) {
+        String IMEI = ((TelephonyManager) context
+                .getSystemService(Context.TELEPHONY_SERVICE)).getDeviceId();
+        return IMEI;
+    }
+
+    public static int getSDKVer() {
+        return Build.VERSION.SDK_INT;
+    }
+
+    public static float getBuildVersion() {
+        return Float.parseFloat(Build.VERSION.RELEASE);
+    }
+
+    /**
+     * 获取电话号码
+     *
+     * @param context
+     * @return
+     */
+    public static final String getPhoneNumber(Context context) {
+        TelephonyManager tm = (TelephonyManager) context
+                .getSystemService(Context.TELEPHONY_SERVICE);
+        String number = tm.getLine1Number();
+        if (number == null) {
+            return "";
+        }
+        return number;
+    }
+
 }
