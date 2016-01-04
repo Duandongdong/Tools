@@ -1,9 +1,15 @@
 package com.baigu.util;
 
 import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
+
+import com.baigu.util.log.Logger;
+
+import java.util.Locale;
 
 /**
  * SystemUtils
@@ -87,6 +93,30 @@ public class SystemUtils {
             return "";
         }
         return number;
+    }
+    /**
+     * 获取软件当前的版本号-
+     *
+     * @param context
+     * @return
+     */
+    public static String getSoftver(Context context) {
+        String ver = "0";
+        try {
+            PackageInfo info = context.getPackageManager().getPackageInfo(
+                    context.getPackageName(), 0);
+            String version = info.versionName;
+            @SuppressWarnings("unused")
+            String versioncode = String.format(Locale.CHINA, "%03d",
+                    info.versionCode);
+            // 是否需要 versionName 和 versionCode 两个值组合
+            ver = version /* + "." + versioncode */;
+        } catch (PackageManager.NameNotFoundException e) {
+            Logger.e(e, "get getSoftver() exception :");
+        } catch (Exception e) {
+            Logger.e(e, "get getSoftver() exception :");
+        }
+        return ver;
     }
 
 }
