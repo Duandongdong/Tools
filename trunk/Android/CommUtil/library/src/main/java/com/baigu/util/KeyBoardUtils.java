@@ -51,7 +51,17 @@ public class KeyBoardUtils {
         InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(token, InputMethodManager.HIDE_NOT_ALWAYS);
     }
-
+    /**
+     * 隐藏键盘
+     *
+     * @param context
+     * @param token
+     */
+    public static void hideSoftInput(Context context, IBinder token) {
+        InputMethodManager imm = (InputMethodManager) context
+                .getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(token, InputMethodManager.HIDE_NOT_ALWAYS);
+    }
     /**
      * 隐藏软键盘
      *
