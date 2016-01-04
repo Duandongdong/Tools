@@ -519,4 +519,26 @@ public class StringUtils {
         map.put("token", token);
         return map;
     }
+
+    /**
+     * 保留指定的小数点位数
+     *
+     * @param decimal
+     * @param f
+     * @return 返回double型数据
+     */
+    public static double formatFloat2Double(int decimal, float f) {
+        double pow = Math.pow(10, decimal);
+
+        long value = Math.round(f * pow);
+
+        double result = value / pow;
+
+        return result;
+        // BigDecimal b = new BigDecimal(f);
+        // double ret = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+        // return (float) ret;
+    }
+
+
 }
