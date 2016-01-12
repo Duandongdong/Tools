@@ -15,4 +15,6 @@
     <string name="date_picker_decrement_year_button">Decrement year</string>
     <string name="xlistview_loading">正在加载&#8230;</string>
 
+    <string name="string_positive">确定</string>
+    <string name="string_negative">取消</string>
 </resources>
