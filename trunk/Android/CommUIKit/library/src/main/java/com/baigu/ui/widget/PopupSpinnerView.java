@@ -148,17 +148,15 @@ public class PopupSpinnerView extends TextView {
             if (mPopupWindow == null || !mPopupWindow.isShowing()) {
                 mPopupWindow = new PopupWindow(mListView);
                 mPopupWindow.setAnimationStyle(R.style.Animation_dropdown);
-                mPopupWindow.setWidth(mShowAsDropDownView == null ? getMeasuredWidth()
-                        : mShowAsDropDownView.getMeasuredWidth());
-                mPopupWindow.setHeight(getTotalHeightofListView());
+                mPopupWindow.setWidth(mShowAsDropDownView == null ? getMeasuredWidth() : mShowAsDropDownView.getMeasuredWidth());
+                mPopupWindow.setHeight(getTotalHeightOfListView());
                 mPopupWindow.setBackgroundDrawable(new BitmapDrawable());
                 mPopupWindow.setOutsideTouchable(true);
                 mPopupWindow.setFocusable(true);
                 mPopupWindow.setClippingEnabled(true);
                 mPopupWindow.setOnDismissListener(OnPopupWindowDismissListener);
                 // mPopupWindow.showAsDropDown(v, v.getLeft(), v.getTop() + 3);
-                mPopupWindow.showAsDropDown(mShowAsDropDownView == null ? v
-                        : mShowAsDropDownView, 0, 0);
+                mPopupWindow.showAsDropDown(mShowAsDropDownView == null ? v : mShowAsDropDownView, 0, 0);
             }
             if (mOnClickListener != null) {
                 mOnClickListener.onClick(v);
@@ -188,8 +186,7 @@ public class PopupSpinnerView extends TextView {
      */
     private final OnItemClickListener ItemClickListener = new OnItemClickListener() {
         @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position,
-                                long id) {
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             if (mPopupWindow != null) {
                 mPopupWindow.dismiss();
             }
@@ -199,8 +196,7 @@ public class PopupSpinnerView extends TextView {
                 mOnItemClickListener.onItemClick(parent, view, position, id);
             }
             if (mOnItemSelectedListener != null) {
-                mOnItemSelectedListener.onItemSelected(parent, view, position,
-                        id);
+                mOnItemSelectedListener.onItemSelected(parent, view, position, id);
             }
         }
     };
@@ -208,11 +204,9 @@ public class PopupSpinnerView extends TextView {
     private final OnItemSelectedListener ItemSelectedListener = new OnItemSelectedListener() {
 
         @Override
-        public void onItemSelected(AdapterView<?> parent, View view,
-                                   int position, long id) {
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
             if (mOnItemSelectedListener != null) {
-                mOnItemSelectedListener.onItemSelected(parent, view, position,
-                        id);
+                mOnItemSelectedListener.onItemSelected(parent, view, position, id);
             }
         }
 
@@ -233,7 +227,7 @@ public class PopupSpinnerView extends TextView {
         public void onDismiss(PopupSpinnerView v);
     }
 
-    private int getTotalHeightofListView() {
+    private int getTotalHeightOfListView() {
 
         int totalHeight = 0;
         if (mListView == null || mListView.getAdapter() == null) {
