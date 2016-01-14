@@ -147,7 +147,7 @@ public class PopupSpinnerView extends TextView {
         public void onClick(View v) {
             if (mPopupWindow == null || !mPopupWindow.isShowing()) {
                 mPopupWindow = new PopupWindow(mListView);
-                mPopupWindow.setAnimationStyle(R.style.Animation_dropdown);
+//                mPopupWindow.setAnimationStyle(R.style.Animation_dropdown);
                 mPopupWindow.setWidth(mShowAsDropDownView == null ? getMeasuredWidth() : mShowAsDropDownView.getMeasuredWidth());
                 mPopupWindow.setHeight(getTotalHeightOfListView());
                 mPopupWindow.setBackgroundDrawable(new BitmapDrawable());
