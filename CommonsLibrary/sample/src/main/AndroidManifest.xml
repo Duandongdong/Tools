@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.bestgood.commons.sample">
+
+    <!-- internet permission -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- https://github.com/yangfuhai/ASimpleCache -->
+        <activity
+            android:name=".persist.acache.AcacheMainActivity"
+            android:label="Persist/ASimpleCache">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.bestgood.commons.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".persist.acache.AboutActivity" />
+        <activity android:name=".persist.acache.SaveBitmapActivity" />
+        <activity android:name=".persist.acache.SaveJsonObjectActivity" />
+        <activity android:name=".persist.acache.SaveObjectActivity" />
+        <activity android:name=".persist.acache.SaveStringActivity" />
+        <activity android:name=".persist.acache.SaveMediaActivity" />
+        <activity android:name=".persist.acache.SaveDrawableActivity" />
+        <activity android:name=".persist.acache.SaveJsonArrayActivity" />
+
+
+        <activity
+            android:name=".ui.widget.LineGridViewActivity"
+            android:label="Widget/LineGridView">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.bestgood.commons.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.widget.LineGridLayoutActivity"
+            android:label="Widget/LineGridLayout">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.bestgood.commons.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.widget.FloatingExpandableListActivity"
+            android:label="Widget/FloatingExpandableList">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.bestgood.commons.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.widget.swipemenulistview.DifferentMenuActivity"
+            android:label="Widget/SwipeMenuListView/different menu demo">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.bestgood.commons.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.widget.swipemenulistview.SimpleActivity"
+            android:label="Widget/SwipeMenuListView/simple demo">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.bestgood.commons.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.view.WebViewActivity"
+            android:label="View/WebView">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.bestgood.commons.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+
+
+
+        <!-- CIRCLE INDICATOR -->
+        <activity
+            android:name=".ui.pager.SampleCirclesDefault"
+            android:label="Pager/Circles/Default">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.bestgood.commons.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.pager.SampleCirclesInitialPage"
+            android:label="Pager/Circles/Initial Page">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.bestgood.commons.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.pager.SampleCirclesSnap"
+            android:label="Pager/Circles/Snap">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.bestgood.commons.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.pager.SampleCirclesStyledLayout"
+            android:label="Pager/Circles/Styled (via layout)"
+            android:theme="@android:style/Theme.Light">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.bestgood.commons.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.pager.SampleCirclesStyledMethods"
+            android:label="Pager/Circles/Styled (via methods)"
+            android:theme="@android:style/Theme.Light">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.bestgood.commons.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.pager.SampleCirclesStyledTheme"
+            android:label="Pager/Circles/Styled (via theme)"
+            android:theme="@style/StyledIndicators">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.bestgood.commons.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.pager.SampleCirclesWithListener"
+            android:label="Pager/Circles/With Listener">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.bestgood.commons.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+
+
+        <!-- ICON INDICATOR -->
+        <activity
+            android:name=".ui.pager.SampleIconsDefault"
+            android:label="Pager/Icons/Default">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.bestgood.commons.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+
+
+        <!-- LINE INDICATOR -->
+        <activity
+            android:name=".ui.pager.SampleLinesDefault"
+            android:label="Pager/Lines/Default">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.bestgood.commons.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.pager.SampleLinesStyledLayout"
+            android:label="Pager/Lines/Styled (via layout)"
+            android:theme="@android:style/Theme.Light">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.bestgood.commons.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.pager.SampleLinesStyledMethods"
+            android:label="Pager/Lines/Styled (via methods)"
+            android:theme="@android:style/Theme.Light">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.bestgood.commons.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.pager.SampleLinesStyledTheme"
+            android:label="Pager/Lines/Styled (via theme)"
+            android:theme="@style/StyledIndicators">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.bestgood.commons.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+
+
+        <!-- TITLE INDICATOR -->
+        <activity
+            android:name=".ui.pager.SampleTitlesBottom"
+            android:label="Pager/Titles/Default (Bottom)">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.bestgood.commons.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.pager.SampleTitlesCenterClickListener"
+            android:label="Pager/Titles/Center Click Listener">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.bestgood.commons.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.pager.SampleTitlesDefault"
+            android:label="Pager/Titles/Default">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.bestgood.commons.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.pager.SampleTitlesInitialPage"
+            android:label="Pager/Titles/Initial Page">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.bestgood.commons.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.pager.SampleTitlesStyledLayout"
+            android:label="Pager/Titles/Styled (via layout)"
+            android:theme="@android:style/Theme.Light">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.bestgood.commons.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.pager.SampleTitlesStyledMethods"
+            android:label="Pager/Titles/Styled (via methods)"
+            android:theme="@android:style/Theme.Light">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.bestgood.commons.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.pager.SampleTitlesStyledTheme"
+            android:label="Pager/Titles/Styled (via theme)"
+            android:theme="@style/StyledIndicators">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.bestgood.commons.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.pager.SampleTitlesTriangle"
+            android:label="Pager/Titles/Triangle Style">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.bestgood.commons.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.pager.SampleTitlesWithListener"
+            android:label="Pager/Titles/With Listener">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.bestgood.commons.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+
+
+        <!-- TAB INDICATOR -->
+        <activity
+            android:name=".ui.pager.SampleTabsDefault"
+            android:label="Pager/Tabs/Default"
+            android:theme="@style/Theme.PageIndicatorDefaults">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.bestgood.commons.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.pager.SampleTabsStyled"
+            android:label="Pager/Tabs/Styled"
+            android:theme="@style/StyledIndicators">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.bestgood.commons.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.pager.SampleTabsWithIcons"
+            android:label="Pager/Tabs/With Icons"
+            android:theme="@style/StyledIndicators">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.bestgood.commons.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+
+
+        <!-- UNDERLINE INDICATOR -->
+        <activity
+            android:name=".ui.pager.SampleUnderlinesDefault"
+            android:label="Pager/Underlines/Default">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.bestgood.commons.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.pager.SampleUnderlinesNoFade"
+            android:label="Pager/Underlines/No Fade">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.bestgood.commons.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.pager.SampleUnderlinesStyledLayout"
+            android:label="Pager/Underlines/Styled (via layout)"
+            android:theme="@android:style/Theme.Light">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.bestgood.commons.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.pager.SampleUnderlinesStyledMethods"
+            android:label="Pager/Underlines/Styled (via methods)"
+            android:theme="@android:style/Theme.Light">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.bestgood.commons.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.pager.SampleUnderlinesStyledTheme"
+            android:label="Pager/Underlines/Styled (via theme)"
+            android:theme="@style/StyledIndicators">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.bestgood.commons.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+
+
+
+
+        <activity
+            android:name=".ui.ptr.refresh.ui.activity.PtrDemoHomeActivity"
+            android:label="Ultra Pull To Refresh"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.bestgood.commons.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.ptr.refresh.ui.viewpager.ViewPagerActivity"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
+        <activity
+            android:name=".ui.ptr.loadmore.base.DemoHomeActivity"
+            android:label="Ultra Pull To Loadmore">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.bestgood.commons.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.ptr.loadmore.ui.activity.PagerTabIndicatorActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.ptr.loadmore.ui.imageloader.activity.LoadBigImageInActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.ptr.loadmore.ui.imageloader.activity.LoadMidImageInActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.ptr.loadmore.ui.imageloader.activity.LoadSmallImageInActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
+    </application>
+
+</manifest>
