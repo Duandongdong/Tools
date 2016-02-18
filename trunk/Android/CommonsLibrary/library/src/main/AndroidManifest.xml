@@ -22,6 +22,7 @@
             android:theme="@android:style/Theme.NoTitleBar"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
 
+        <service android:name="com.amap.api.location.APSService"/>
         <service android:name="com.bestgood.commons.network.http.HttpClientService" />
     </application>
 
