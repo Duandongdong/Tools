@@ -24,7 +24,7 @@ public class StringUtils {
 
     /**
      * is null or its length is 0 or it is made by space
-     * <p>
+     * <p/>
      * <pre>
      * isBlank(null) = true;
      * isBlank(&quot;&quot;) = true;
@@ -44,7 +44,7 @@ public class StringUtils {
 
     /**
      * is null or its length is 0
-     * <p>
+     * <p/>
      * <pre>
      * isEmpty(null) = true;
      * isEmpty(&quot;&quot;) = true;
@@ -71,8 +71,22 @@ public class StringUtils {
     }
 
     /**
+     * 比较两个字符串是否相等，null 和 "" 相等
+     *
+     * @param actual
+     * @param expected
+     * @return
+     */
+    public static boolean isEqualsIgnoreEmptyStr(String actual, String expected) {
+        if (TextUtils.isEmpty(actual)) {
+            return TextUtils.isEmpty(expected);
+        }
+        return actual.equals(expected);
+    }
+
+    /**
      * get length of CharSequence
-     * <p>
+     * <p/>
      * <pre>
      * length(null) = 0;
      * length(\"\") = 0;
@@ -88,7 +102,7 @@ public class StringUtils {
 
     /**
      * null Object to empty string
-     * <p>
+     * <p/>
      * <pre>
      * nullStrToEmpty(null) = &quot;&quot;;
      * nullStrToEmpty(&quot;&quot;) = &quot;&quot;;
@@ -104,7 +118,7 @@ public class StringUtils {
 
     /**
      * capitalize first letter
-     * <p>
+     * <p/>
      * <pre>
      * capitalizeFirstLetter(null)     =   null;
      * capitalizeFirstLetter("")       =   "";
@@ -129,7 +143,7 @@ public class StringUtils {
 
     /**
      * encoded in utf-8
-     * <p>
+     * <p/>
      * <pre>
      * utf8Encode(null)        =   null
      * utf8Encode("")          =   "";
@@ -172,7 +186,7 @@ public class StringUtils {
 
     /**
      * get innerHtml from href
-     * <p>
+     * <p/>
      * <pre>
      * getHrefInnerHtml(null)                                  = ""
      * getHrefInnerHtml("")                                    = ""
@@ -211,7 +225,7 @@ public class StringUtils {
 
     /**
      * process special char in html
-     * <p>
+     * <p/>
      * <pre>
      * htmlEscapeCharsToString(null) = null;
      * htmlEscapeCharsToString("") = "";
@@ -233,7 +247,7 @@ public class StringUtils {
 
     /**
      * transform half width char to full width char
-     * <p>
+     * <p/>
      * <pre>
      * fullWidthToHalfWidth(null) = null;
      * fullWidthToHalfWidth("") = "";
@@ -266,7 +280,7 @@ public class StringUtils {
 
     /**
      * transform full width char to half width char
-     * <p>
+     * <p/>
      * <pre>
      * halfWidthToFullWidth(null) = null;
      * halfWidthToFullWidth("") = "";
@@ -296,6 +310,7 @@ public class StringUtils {
         }
         return new String(source);
     }
+
     public static String token = null;
 
     /**
