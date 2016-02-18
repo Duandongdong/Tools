@@ -1,0 +1,9 @@
+<resources>
+
+    <dimen name="pager_indicator_height">55dp</dimen>
+    <dimen name="pager_indicator_icon_size">27dp</dimen>
+    <dimen name="pager_indicator_text_size">10sp</dimen>
+    <dimen name="line_size">1px</dimen>
+    <dimen name="list_type_separator">15dp</dimen>
+    <dimen name="list_type_separator_line">1px</dimen>
+</resources>
