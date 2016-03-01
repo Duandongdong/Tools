@@ -23,8 +23,24 @@ public class StringUtils {
     }
 
     /**
+     * 隐藏手机号码中间4位数字，用‘*’代替
+     *
+     * @param phoneNumber 11位手机号码字符串
+     * @return 用‘*’替换中间四位数字的字符串
+     */
+    public static String hidePhoneNumber(String phoneNumber) {
+        Logger.d("phoneNumber:%@", phoneNumber);
+        if (!TextUtils.isEmpty(phoneNumber) && phoneNumber.length() >= 7) {
+            phoneNumber = phoneNumber.substring(0, 3) + "****" + phoneNumber.substring(7, phoneNumber.length());
+        }
+        Logger.d("hidePhoneNumber:%@", phoneNumber);
+        return phoneNumber;
+    }
+
+
+    /**
      * is null or its length is 0 or it is made by space
-     * <p>
+     * <p/>
      * <pre>
      * isBlank(null) = true;
      * isBlank(&quot;&quot;) = true;
@@ -44,7 +60,7 @@ public class StringUtils {
 
     /**
      * is null or its length is 0
-     * <p>
+     * <p/>
      * <pre>
      * isEmpty(null) = true;
      * isEmpty(&quot;&quot;) = true;
@@ -72,7 +88,7 @@ public class StringUtils {
 
     /**
      * get length of CharSequence
-     * <p>
+     * <p/>
      * <pre>
      * length(null) = 0;
      * length(\"\") = 0;
@@ -88,7 +104,7 @@ public class StringUtils {
 
     /**
      * null Object to empty string
-     * <p>
+     * <p/>
      * <pre>
      * nullStrToEmpty(null) = &quot;&quot;;
      * nullStrToEmpty(&quot;&quot;) = &quot;&quot;;
@@ -104,7 +120,7 @@ public class StringUtils {
 
     /**
      * capitalize first letter
-     * <p>
+     * <p/>
      * <pre>
      * capitalizeFirstLetter(null)     =   null;
      * capitalizeFirstLetter("")       =   "";
@@ -129,7 +145,7 @@ public class StringUtils {
 
     /**
      * encoded in utf-8
-     * <p>
+     * <p/>
      * <pre>
      * utf8Encode(null)        =   null
      * utf8Encode("")          =   "";
@@ -172,7 +188,7 @@ public class StringUtils {
 
     /**
      * get innerHtml from href
-     * <p>
+     * <p/>
      * <pre>
      * getHrefInnerHtml(null)                                  = ""
      * getHrefInnerHtml("")                                    = ""
@@ -211,7 +227,7 @@ public class StringUtils {
 
     /**
      * process special char in html
-     * <p>
+     * <p/>
      * <pre>
      * htmlEscapeCharsToString(null) = null;
      * htmlEscapeCharsToString("") = "";
@@ -233,7 +249,7 @@ public class StringUtils {
 
     /**
      * transform half width char to full width char
-     * <p>
+     * <p/>
      * <pre>
      * fullWidthToHalfWidth(null) = null;
      * fullWidthToHalfWidth("") = "";
@@ -266,7 +282,7 @@ public class StringUtils {
 
     /**
      * transform full width char to half width char
-     * <p>
+     * <p/>
      * <pre>
      * halfWidthToFullWidth(null) = null;
      * halfWidthToFullWidth("") = "";
@@ -296,6 +312,7 @@ public class StringUtils {
         }
         return new String(source);
     }
+
     public static String token = null;
 
     /**
