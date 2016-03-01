@@ -29,11 +29,11 @@ public class StringUtils {
      * @return 用‘*’替换中间四位数字的字符串
      */
     public static String hidePhoneNumber(String phoneNumber) {
-        Logger.d("phoneNumber:%@", phoneNumber);
+        Logger.d("phoneNumber:%s", phoneNumber);
         if (!TextUtils.isEmpty(phoneNumber) && phoneNumber.length() >= 7) {
             phoneNumber = phoneNumber.substring(0, 3) + "****" + phoneNumber.substring(7, phoneNumber.length());
         }
-        Logger.d("hidePhoneNumber:%@", phoneNumber);
+        Logger.d("hidePhoneNumber:%s", phoneNumber);
         return phoneNumber;
     }
 
