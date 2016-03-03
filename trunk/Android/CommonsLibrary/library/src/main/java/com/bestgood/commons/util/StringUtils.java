@@ -22,6 +22,27 @@ public class StringUtils {
         throw new AssertionError();
     }
 
+    public static String formatFloatStr(String floatStr) {
+        if (floatStr.indexOf(".") != -1) {
+            int dian = floatStr.indexOf(".");
+            String dianAfter = floatStr.substring(0, dian + 1);
+            String afterData = floatStr.replace(dianAfter, "");
+            String lastnum = floatStr.substring(floatStr.length() - 1, floatStr.length());
+            if (afterData.length() > 2) {
+                floatStr = floatStr.substring(0, dian) + "." + afterData.substring(0, 2);
+            }
+            if (lastnum.equals("0") && afterData.length() == 2) {
+                floatStr = floatStr.substring(0, dian) + "." + afterData.substring(0, 1);
+            }
+            if (lastnum.equals("0") && afterData.length() == 1) {
+                floatStr = floatStr.substring(0, dian);
+            }
+        } else {
+            return floatStr;
+        }
+        return floatStr;
+    }
+
     /**
      * 隐藏手机号码中间4位数字，用‘*’代替
      *
