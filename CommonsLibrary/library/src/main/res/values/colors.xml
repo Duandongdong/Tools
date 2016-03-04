@@ -15,7 +15,7 @@
     <color name="light_blue">#87d0f2</color>
     <color name="green">#1D9561</color>
     <color name="blue">#00BFFF</color>
-    <color name="blue_new">##029CDA</color>
+    <color name="blue_new">#029CDA</color>
     <!-- background color -->
     <!-- filterlistview IndexBar bg -->
     <color name="transparent_half_light_gray">#99C9C9C9</color>
