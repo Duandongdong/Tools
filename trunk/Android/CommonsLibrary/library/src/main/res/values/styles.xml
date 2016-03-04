@@ -234,7 +234,14 @@
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">22sp</item>
     </style>
-
+    <!-- 蓝色按钮样式 -->
+    <style name="ButtonStyleBlue">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/blue_btn_height</item>
+    </style>
     <style name="ActionBarTextStyleMidWhite">
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">14sp</item>

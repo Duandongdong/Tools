@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
 **
 ** Copyright 2011, The Android Open Source Project
 **
@@ -30,7 +29,7 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
     android:gravity="center"
-    android:orientation="horizontal" >
+    android:orientation="horizontal">
 
     <LinearLayout
         android:id="@+id/pickers"
@@ -38,11 +37,11 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <!-- Month -->
 
-        <com.besttone.carmanager.widget.datepicker.NumberPicker
+        <com.bestgood.commons.ui.widget.datepicker.NumberPicker
             android:id="@+id/month"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -53,7 +52,7 @@
 
         <!-- Day -->
 
-        <com.besttone.carmanager.widget.datepicker.NumberPicker
+        <com.bestgood.commons.ui.widget.datepicker.NumberPicker
             android:id="@+id/day"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -64,7 +63,7 @@
 
         <!-- Year -->
 
-        <com.besttone.carmanager.widget.datepicker.NumberPicker
+        <com.bestgood.commons.ui.widget.datepicker.NumberPicker
             android:id="@+id/year"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -76,7 +75,7 @@
 
     <!-- calendar view -->
 
-    <com.besttone.carmanager.widget.datepicker.CalendarView
+    <com.bestgood.commons.ui.widget.datepicker.CalendarView
         android:id="@+id/calendar_view"
         android:layout_width="245dip"
         android:layout_height="280dip"

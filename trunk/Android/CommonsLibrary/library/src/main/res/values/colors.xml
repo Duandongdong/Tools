@@ -41,9 +41,11 @@
     <!-- title 颜色 -->
     <!-- 页面背景色 -->
     <color name="text_color_bg_gray">#F5F5F5</color>
+    <color name="text_color_gray_order">#999999</color>
     <color name="text_color_title">#4d4d4d</color>
     <!-- 蓝色 -->
     <color name="text_color_blue">#029cda</color>
+    <color name="text_color_black_new">#333333</color>
     <!-- 深灰色 -->
     <color name="text_color_dark_gray">#4d4d4d</color>
     <!-- 浅灰色深灰色之间 -->
@@ -56,6 +58,7 @@
     <color name="text_color_gray_login">#F6F6FA</color>
     <color name="text_color_gray_login_background">#F2F2F2</color>
     <color name="text_color_gray_milldel">#626262</color>
+    <color name="text_color_black">#666666</color>
     <!-- 红色 -->
     <color name="text_color_red">#921A1E</color>
     <!-- 绿色 -->
