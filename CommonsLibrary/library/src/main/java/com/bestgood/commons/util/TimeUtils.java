@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.res.Resources;
 import android.text.TextUtils;
 
-
 import com.bestgood.commons.R;
 import com.bestgood.commons.util.log.Logger;
 
@@ -25,6 +24,17 @@ public class TimeUtils {
 
     private TimeUtils() {
         throw new AssertionError();
+    }
+
+    /**
+     * 获取上一个月的时间毫秒值
+     *
+     * @return
+     */
+    public static long getLastMonthTimeInMillis() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.MONTH, calendar.get(Calendar.MONTH) - 1);
+        return calendar.getTimeInMillis();
     }
 
     /**
