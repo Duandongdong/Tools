@@ -22,7 +22,13 @@ public class StringUtils {
         throw new AssertionError();
     }
 
-    public static String formatFloatStr(String floatStr) {
+    /**
+     * 格式化价格，小数点后有几位就显示几位，
+     *
+     * @param floatStr
+     * @return
+     */
+    public static String formatPriceStr(String floatStr) {
         if (floatStr.indexOf(".") != -1) {
             int dian = floatStr.indexOf(".");
             String dianAfter = floatStr.substring(0, dian + 1);
