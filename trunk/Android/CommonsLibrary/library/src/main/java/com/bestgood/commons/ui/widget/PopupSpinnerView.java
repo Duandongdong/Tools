@@ -1,8 +1,10 @@
 package com.bestgood.commons.ui.widget;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
@@ -55,6 +57,14 @@ public class PopupSpinnerView extends TextView {
     // ===============================================================================
     private void init() {
         super.setOnClickListener(OnSpinnerClickListener);
+        setSingleLine(true);
+        setEllipsize(TextUtils.TruncateAt.MARQUEE);
+        setPadding(getPaddingTop(), getPaddingTop(), getPaddingBottom(), getPaddingBottom());
+    }
+
+    @Override
+    public boolean isFocused() {
+        return true;
     }
 
     public void setAdapter(BaseAdapter adapter) {
@@ -72,14 +82,13 @@ public class PopupSpinnerView extends TextView {
             mListView.setAdapter(adapter);
             mListView.setOnItemClickListener(ItemClickListener);
             mListView.setOnItemSelectedListener(ItemSelectedListener);
-            MarginLayoutParams params = new MarginLayoutParams(getWidth(),
-                    LayoutParams.WRAP_CONTENT);
-            int padding = getResources().getDimensionPixelSize(
-                    R.dimen.content_edge_padding);
-            params.leftMargin = padding;
-            params.rightMargin = padding;
-            mListView.setPadding(padding, 0, padding, 0);
-            mListView.setLayoutParams(params);
+//            MarginLayoutParams params = new MarginLayoutParams(getWidth(), LayoutParams.WRAP_CONTENT);
+//            int padding = getResources().getDimensionPixelSize(
+//                    R.dimen.content_edge_padding);
+//            params.leftMargin = padding;
+//            params.rightMargin = padding;
+//            mListView.setPadding(padding, 0, padding, 0);
+//            mListView.setLayoutParams(params);
             mSelectedPosition = 0;
         } else {
             mSelectedPosition = -1;
@@ -220,9 +229,9 @@ public class PopupSpinnerView extends TextView {
 
     public interface OnPopupWindowChangeListener {
 
-        public void onOpened(PopupSpinnerView v);
+        void onOpened(PopupSpinnerView v);
 
-        public void onDismiss(PopupSpinnerView v);
+        void onDismiss(PopupSpinnerView v);
     }
 
     private int getTotalHeightOfListView() {
@@ -230,15 +239,14 @@ public class PopupSpinnerView extends TextView {
         int totalHeight = 0;
         if (mListView == null || mListView.getAdapter() == null) {
             return totalHeight;
-        }
+        }/**/
         ListAdapter adapter = mListView.getAdapter();
-        for (int i = 0; i < adapter.getCount(); i++) {
+        int maxLines = Math.min(adapter.getCount(), 7);
+        for (int i = 0; i < maxLines; i++) {
             View mView = adapter.getView(i, null, mListView);
-            mView.measure(MeasureSpec.makeMeasureSpec(Integer.MAX_VALUE >> 2,
-                    MeasureSpec.AT_MOST), MeasureSpec.makeMeasureSpec(
-                    Integer.MAX_VALUE >> 2, MeasureSpec.AT_MOST));
-            totalHeight += mView.getMeasuredHeight()
-                    + mListView.getDividerHeight();
+            mView.measure(MeasureSpec.makeMeasureSpec(Integer.MAX_VALUE >> 2, MeasureSpec.AT_MOST),
+                    MeasureSpec.makeMeasureSpec(Integer.MAX_VALUE >> 2, MeasureSpec.AT_MOST));
+            totalHeight += mView.getMeasuredHeight() + mListView.getDividerHeight();
         }
         return totalHeight;
     }
