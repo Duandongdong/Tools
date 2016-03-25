@@ -17,11 +17,9 @@ import android.content.Context;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 
+import com.bestgood.commons.util.GsonFactory;
 import com.bestgood.commons.util.config.AppConfig;
 import com.bestgood.commons.util.log.Logger;
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.api.client.http.ByteArrayContent;
 import com.google.api.client.http.HttpContent;
 import com.google.api.client.http.HttpHeaders;
@@ -29,8 +27,7 @@ import com.google.api.client.http.HttpRequest;
 import com.google.api.client.http.HttpRequestFactory;
 import com.google.api.client.http.HttpResponse;
 import com.google.api.client.http.UrlEncodedContent;
-import com.google.api.client.json.JsonParser;
-import com.google.api.client.json.jackson2.JacksonFactory;
+import com.google.gson.Gson;
 import com.octo.android.robospice.request.SpiceRequest;
 
 /**
@@ -157,18 +154,8 @@ public abstract class HttpClientRequest<RESULT extends HttpClientResponse> exten
     protected String buildPostEntity() {
         buildCommFiledsValue(mContext);
         if (FORMAT_JSON.equals(mRequestContentFormat)) {
-            ObjectMapper mapper = new ObjectMapper();
-            mapper.setVisibilityChecker(mapper.getSerializationConfig()
-                    .getDefaultVisibilityChecker()
-                    .withGetterVisibility(JsonAutoDetect.Visibility.NONE)
-                    .withSetterVisibility(JsonAutoDetect.Visibility.NONE)
-                    .withIsGetterVisibility(JsonAutoDetect.Visibility.NONE)
-                    .withFieldVisibility(JsonAutoDetect.Visibility.PUBLIC_ONLY));
-            try {
-                return mapper.writeValueAsString(this);
-            } catch (JsonProcessingException e) {
-                Logger.t(getClass().getSimpleName()).e(e, "buildPostEntity()");
-            }
+            Gson gson = GsonFactory.buildOnlyIncludePublicFieldsGson();
+            return gson.toJson(this);
         }
         return "";
     }
@@ -247,11 +234,10 @@ public abstract class HttpClientRequest<RESULT extends HttpClientResponse> exten
         //long jsonParserTime = System.currentTimeMillis();
         RESULT response = getResultType().newInstance();
         if (mParser) {
-            JsonParser jsonParser = new JacksonFactory().createJsonParser(responseStr);
-            response = jsonParser.parse(getResultType(), null);
+            Gson gson = GsonFactory.buildOnlyIncludeExposeAnnotationGson();
+            response = gson.fromJson(responseStr, getResultType());
             response.setStatusCode(httpResponse.getStatusCode());
             response.setStatusMessage(httpResponse.getStatusMessage());
-            jsonParser.close();
         } else {
             response.setStatusCode(httpResponse.getStatusCode());
             response.setStatusMessage(httpResponse.getStatusMessage());
