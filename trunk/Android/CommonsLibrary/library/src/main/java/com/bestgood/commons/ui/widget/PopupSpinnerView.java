@@ -241,7 +241,7 @@ public class PopupSpinnerView extends TextView {
             return totalHeight;
         }/**/
         ListAdapter adapter = mListView.getAdapter();
-        int maxLines = Math.min(adapter.getCount(), 7);
+        int maxLines = Math.min(adapter.getCount(), 5);
         for (int i = 0; i < maxLines; i++) {
             View mView = adapter.getView(i, null, mListView);
             mView.measure(MeasureSpec.makeMeasureSpec(Integer.MAX_VALUE >> 2, MeasureSpec.AT_MOST),
