@@ -11,7 +11,6 @@ import java.security.NoSuchAlgorithmException;
 import java.security.UnrecoverableKeyException;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
-import java.util.Map;
 import java.util.Set;
 
 import javax.net.ssl.HostnameVerifier;
@@ -40,18 +39,9 @@ import android.content.Intent;
 import android.os.IBinder;
 
 import com.bestgood.commons.util.log.Logger;
-import com.google.api.client.http.HttpRequest;
 import com.google.api.client.http.HttpRequestFactory;
-import com.google.api.client.http.HttpRequestInitializer;
-import com.google.api.client.http.HttpResponse;
 import com.google.api.client.http.HttpTransport;
-import com.google.api.client.http.HttpUnsuccessfulResponseHandler;
 import com.google.api.client.http.apache.ApacheHttpTransport;
-import com.google.api.client.json.JsonFactory;
-import com.google.api.client.json.JsonObjectParser;
-import com.google.api.client.json.jackson2.JacksonFactory;
-import com.google.api.client.xml.XmlNamespaceDictionary;
-import com.google.api.client.xml.XmlObjectParser;
 import com.octo.android.robospice.SpiceService;
 import com.octo.android.robospice.request.CachedSpiceRequest;
 import com.octo.android.robospice.request.SpiceRequest;
@@ -62,8 +52,6 @@ import com.octo.android.robospice.request.listener.RequestListener;
  * @date Apr 20, 2014 7:43:29 PM
  */
 public abstract class AbsHttpClientService extends SpiceService {
-
-    // private final HttpTransport HTTP_TRANSPORT = newCompatibleTransport();
 
     @Override
     public void onCreate() {
@@ -77,66 +65,15 @@ public abstract class AbsHttpClientService extends SpiceService {
         if (spiceRequest instanceof HttpClientRequest) {
             HttpClientRequest<?> req = (HttpClientRequest<?>) spiceRequest;
             req.setContext(this);
-            req.setHttpRequestFactory(createRequestFactory(req));
+            req.setHttpRequestFactory(createRequestFactory());
         }
         super.addRequest(request, listRequestListener);
     }
 
-    private HttpRequestFactory createRequestFactory(HttpClientRequest<?> request) {
-        return newCompatibleTransport().createRequestFactory(
-                new Initializer(request.isParser(),
-                        request.getResponseContentFormat(),
-                        request.getXmlNamespaceDictionaryMap()));
+    private HttpRequestFactory createRequestFactory() {
+        return newCompatibleTransport().createRequestFactory();
     }
 
-    private class Initializer implements HttpRequestInitializer,
-            HttpUnsuccessfulResponseHandler {
-        boolean isParser;
-        String format;
-        Map<String, String> namespace;
-
-        public Initializer(boolean isParser, String format, Map<String, String> namespace) {
-            this.isParser = isParser;
-            this.format = format;
-            this.namespace = namespace;
-        }
-
-        @Override
-        public boolean handleResponse(HttpRequest request, HttpResponse response, boolean retrySupported) throws IOException {
-            Logger.v("Initializer handleResponse: %s", response.getStatusCode() + " " + response.getStatusMessage());
-            return false;
-        }
-
-        @Override
-        public void initialize(HttpRequest request) throws IOException {
-            request.setUnsuccessfulResponseHandler(this);
-            if (!isParser) {
-                return;
-            }
-            if (HttpClientRequest.FORMAT_XML.equals(format)) {
-                request.setParser(buildXmlObjectParser(namespace));
-            } else if (HttpClientRequest.FORMAT_JSON.equals(format)) {
-                request.setParser(buildJsonObjectParser());
-            } else {
-                // TODO...解析其他文本格式
-            }
-        }
-
-        private JsonObjectParser buildJsonObjectParser() {
-            JsonFactory JSON_FACTORY = new JacksonFactory();
-            return new JsonObjectParser(JSON_FACTORY);
-        }
-
-        private XmlObjectParser buildXmlObjectParser(Map<String, String> namespace) {
-            XmlNamespaceDictionary xmlNamespaceDictionary = new XmlNamespaceDictionary();
-            if (namespace != null && namespace.size() > 0) {
-                for (String alias : namespace.keySet()) {
-                    xmlNamespaceDictionary.set(alias, namespace.get(alias));
-                }
-            }
-            return new XmlObjectParser(xmlNamespaceDictionary);
-        }
-    }
 
     // =============================================================================================================
 
