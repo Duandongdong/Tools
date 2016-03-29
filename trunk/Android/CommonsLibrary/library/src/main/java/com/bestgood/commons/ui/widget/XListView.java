@@ -26,7 +26,9 @@ import android.widget.TextView;
 import com.bestgood.commons.R;
 import com.bestgood.commons.util.log.Logger;
 
-
+/**
+ * https://github.com/Maxwin-z/XListView-Android
+ */
 public class XListView extends ListView implements OnScrollListener {
 
     private float mLastY = -1; // save event y
@@ -40,12 +42,12 @@ public class XListView extends ListView implements OnScrollListener {
     private XListViewHeader mHeaderView;
     // header view content, use it to calculate the Header's height. And hide it
     // when disable pull refresh.
-    public View mHeaderViewContent;
-    public View mFooterViewContent;
+    private View mHeaderViewContent;
+    private View mFooterViewContent;
     private TextView mHeaderTimeView;
     private int mHeaderViewHeight; // header view's height
-    private boolean mEnablePullRefresh = true;
-    private boolean mPullRefreshing = false; // is refreashing.
+    private boolean mEnablePullRefresh = false;
+    private boolean mPullRefreshing = true; // is refreashing.
 
     // -- footer view
     private XListViewFooter mFooterView;
@@ -113,16 +115,6 @@ public class XListView extends ListView implements OnScrollListener {
                 });
     }
 
-    public void startPullLoading() {
-        mPullRefreshing = true;
-        // mScroller.startScroll(0, 50, 0, 150);
-        mHeaderView.setVisiableHeight(150);
-        // mHeaderView.setState(XListViewFooter.STATE_NORMAL);
-        mHeaderView.setState(XListViewFooter.STATE_LOADING);
-        if (mListViewListener != null) {
-            mListViewListener.onRefresh();
-        }
-    }
 
     @Override
     public void setAdapter(ListAdapter adapter) {
@@ -172,6 +164,26 @@ public class XListView extends ListView implements OnScrollListener {
         }
     }
 
+    public void startRefreshing() {
+        mPullRefreshing = true;
+        mHeaderViewContent.setVisibility(View.VISIBLE);
+        mHeaderView.setVisibility(View.VISIBLE);
+        mHeaderView.setVisiableHeight(mHeaderViewHeight > 0 ? mHeaderViewHeight + 10 : 200);
+        mHeaderView.setState(XListViewHeader.STATE_REFRESHING);
+        resetHeaderHeight();
+        if (mListViewListener != null) {
+            mListViewListener.onRefresh();
+        }
+    }
+
+    private void startLoadMore() {
+        mPullLoading = true;
+        mFooterView.setState(XListViewFooter.STATE_LOADING);
+        if (mListViewListener != null) {
+            mListViewListener.onLoadMore();
+        }
+    }
+
     /**
      * stop refresh, reset header view.
      */
@@ -190,6 +202,7 @@ public class XListView extends ListView implements OnScrollListener {
             mFooterView.setState(XListViewFooter.STATE_NORMAL);
         }
     }
+
 
     /**
      * set last refresh time
@@ -301,13 +314,6 @@ public class XListView extends ListView implements OnScrollListener {
         }
     }
 
-    private void startLoadMore() {
-        mPullLoading = true;
-        mFooterView.setState(XListViewFooter.STATE_LOADING);
-        if (mListViewListener != null) {
-            mListViewListener.onLoadMore();
-        }
-    }
 
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
@@ -337,8 +343,7 @@ public class XListView extends ListView implements OnScrollListener {
                 mLastY = -1; // reset
                 if (getFirstVisiblePosition() == 0) {
                     // invoke refresh
-                    if (mEnablePullRefresh
-                            && mHeaderView.getVisiableHeight() > mHeaderViewHeight) {
+                    if (mEnablePullRefresh && mHeaderView.getVisiableHeight() > mHeaderViewHeight) {
                         mPullRefreshing = true;
                         mHeaderView.setState(XListViewHeader.STATE_REFRESHING);
                         if (mListViewListener != null) {
