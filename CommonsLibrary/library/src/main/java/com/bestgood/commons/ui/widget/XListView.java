@@ -46,8 +46,8 @@ public class XListView extends ListView implements OnScrollListener {
     private View mFooterViewContent;
     private TextView mHeaderTimeView;
     private int mHeaderViewHeight; // header view's height
-    private boolean mEnablePullRefresh = false;
-    private boolean mPullRefreshing = true; // is refreashing.
+    private boolean mEnablePullRefresh = true;
+    private boolean mPullRefreshing = false; // is refreashing.
 
     // -- footer view
     private XListViewFooter mFooterView;
@@ -165,12 +165,10 @@ public class XListView extends ListView implements OnScrollListener {
     }
 
     public void startRefreshing() {
+        setSelection(0);
+        mHeaderView.setVisiableHeight(150);
         mPullRefreshing = true;
-        mHeaderViewContent.setVisibility(View.VISIBLE);
-        mHeaderView.setVisibility(View.VISIBLE);
-        mHeaderView.setVisiableHeight(mHeaderViewHeight > 0 ? mHeaderViewHeight + 10 : 200);
         mHeaderView.setState(XListViewHeader.STATE_REFRESHING);
-        resetHeaderHeight();
         if (mListViewListener != null) {
             mListViewListener.onRefresh();
         }
@@ -327,14 +325,11 @@ public class XListView extends ListView implements OnScrollListener {
             case MotionEvent.ACTION_MOVE:
                 final float deltaY = ev.getRawY() - mLastY;
                 mLastY = ev.getRawY();
-                if (mEnablePullRefresh && getFirstVisiblePosition() == 0
-                        && (mHeaderView.getVisiableHeight() > 0 || deltaY > 0)) {
+                if (mEnablePullRefresh && getFirstVisiblePosition() == 0 && (mHeaderView.getVisiableHeight() > 0 || deltaY > 0)) {
                     // the first item is showing, header has shown or pull down.
                     updateHeaderHeight(deltaY / OFFSET_RADIO);
                     invokeOnScrolling();
-                } else if (mEnablePullLoad
-                        && getLastVisiblePosition() == mTotalItemCount - 1
-                        && (mFooterView.getBottomMargin() > 0 || deltaY < 0)) {
+                } else if (mEnablePullLoad && getLastVisiblePosition() == mTotalItemCount - 1 && (mFooterView.getBottomMargin() > 0 || deltaY < 0)) {
                     // last item, already pulled up or want to pull up.
                     updateFooterHeight(-deltaY / OFFSET_RADIO);
                 }
