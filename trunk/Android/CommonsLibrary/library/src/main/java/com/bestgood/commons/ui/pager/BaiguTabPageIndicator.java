@@ -100,6 +100,10 @@ public class BaiguTabPageIndicator extends LinearLayout implements PageIndicator
         }
     }
 
+    public int getCurrentItem() {
+        return mViewPager == null ? 0 : mViewPager.getCurrentItem();
+    }
+
     @Override
     public void setOnPageChangeListener(OnPageChangeListener listener) {
         if (mViewPager != null) {
