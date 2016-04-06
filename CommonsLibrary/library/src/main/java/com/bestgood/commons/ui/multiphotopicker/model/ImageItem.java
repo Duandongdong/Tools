@@ -3,14 +3,20 @@ package com.bestgood.commons.ui.multiphotopicker.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.Expose;
+
 /**
  * 图片对象
  */
 public class ImageItem implements Parcelable {
 
+    @Expose
     public String imageId;
+    @Expose
     public String thumbnailPath;
+    @Expose
     public String sourcePath;
+    @Expose
     public boolean isSelected = false;
 
     public ImageItem() {
