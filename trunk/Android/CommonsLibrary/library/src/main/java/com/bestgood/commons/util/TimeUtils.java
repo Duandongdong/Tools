@@ -430,6 +430,12 @@ public class TimeUtils {
         return sdf.format(date);
     }
 
+    public static String formatdate_yyyyMM(long currenttime) {
+        Date date = new Date(currenttime);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMM");
+        return sdf.format(date);
+    }
+
     /**
      * 格式化日期dd_MM hh:mm
      *
