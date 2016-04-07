@@ -504,7 +504,9 @@ public class TimeUtils {
         if (minute > 0) {
             time += minute + res.getString(R.string.minute);
         }
-        time += String.format("%02d", second) + res.getString(R.string.second);
+        if (second > 0) {
+            time += String.format("%02d", second) + res.getString(R.string.second);
+        }
         return time;
     }
 
