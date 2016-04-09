@@ -52,20 +52,17 @@ public class LinearListView extends IcsLinearLayout {
     public LinearListView(Context context, AttributeSet attrs) {
         super(context, attrs);
 
-        TypedArray a = context.obtainStyledAttributes(attrs,
-                R_styleable_LinearListView);
+        TypedArray a = context.obtainStyledAttributes(attrs, R_styleable_LinearListView);
 
         // Use the thickness specified, zero being the default
-        final int thickness = a.getDimensionPixelSize(
-                LinearListView_dividerThickness, 0);
+        final int thickness = a.getDimensionPixelSize(LinearListView_dividerThickness, 0);
         if (thickness != 0) {
             setDividerThickness(thickness);
         }
 
         CharSequence[] entries = a.getTextArray(LinearListView_entries);
         if (entries != null) {
-            setAdapter(new ArrayAdapter<CharSequence>(context,
-                    android.R.layout.simple_list_item_1, entries));
+            setAdapter(new ArrayAdapter<CharSequence>(context, android.R.layout.simple_list_item_1, entries));
         }
 
         a.recycle();
@@ -223,8 +220,7 @@ public class LinearListView extends IcsLinearLayout {
                 setVisibility(View.VISIBLE);
             }
         } else {
-            if (mEmptyView != null)
-                mEmptyView.setVisibility(View.GONE);
+            if (mEmptyView != null) mEmptyView.setVisibility(View.GONE);
             setVisibility(View.VISIBLE);
         }
     }
@@ -265,8 +261,7 @@ public class LinearListView extends IcsLinearLayout {
         @Override
         public void onClick(View v) {
             if ((mOnItemClickListener != null) && (mAdapter != null)) {
-                mOnItemClickListener.onItemClick(LinearListView.this, v,
-                        mPosition, mAdapter.getItemId(mPosition));
+                mOnItemClickListener.onItemClick(LinearListView.this, v, mPosition, mAdapter.getItemId(mPosition));
             }
         }
     }
