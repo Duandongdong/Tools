@@ -37,8 +37,7 @@ public class SmsUtil {
      * @param: @param msgbody
      * @return: void
      */
-    public static void sendMsgSystem(Context context, String number,
-                                     String msgbody) {
+    public static void sendMsgSystem(Context context, String number, String msgbody) {
         Intent intent = new Intent(Intent.ACTION_SENDTO);
         intent.setData(Uri.parse("smsto:" + number));
         intent.putExtra("sms_body", msgbody);
