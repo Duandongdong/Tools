@@ -15,12 +15,18 @@ public final class Logger {
     private static final Printer PRINTER = new LoggerPrinter();
     private static final Printer PRINTER_EMPTY = new LoggerPrinterEmpty();
 
+    private static boolean isDebuggable = BuildConfig.DEBUG;
+
     //no instance
     private Logger() {
     }
 
+    public static void setDebuggable(boolean isDebuggable) {
+        Logger.isDebuggable = isDebuggable;
+    }
+
     public static boolean isDebuggable() {
-        return BuildConfig.DEBUG;
+        return isDebuggable;
     }
 
     /**
