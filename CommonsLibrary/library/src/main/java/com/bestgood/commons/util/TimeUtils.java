@@ -19,8 +19,8 @@ import java.util.Locale;
  */
 public class TimeUtils {
 
-    public static final SimpleDateFormat DEFAULT_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    public static final SimpleDateFormat DATE_FORMAT_DATE = new SimpleDateFormat("yyyy-MM-dd");
+    public static final SimpleDateFormat DEFAULT_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA);
+    public static final SimpleDateFormat DATE_FORMAT_DATE = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA);
 
     private TimeUtils() {
         throw new AssertionError();
@@ -110,8 +110,7 @@ public class TimeUtils {
         int reviewMonth = reviewCal.get(Calendar.MONTH);
         int reviewDay = reviewCal.get(Calendar.DAY_OF_MONTH);
 
-        if (curYear == reviewYear && curMonth == reviewMonth
-                && curDay == reviewDay) {
+        if (curYear == reviewYear && curMonth == reviewMonth && curDay == reviewDay) {
             return "今天";
         }
         if (curYear == reviewYear) {
@@ -156,10 +155,9 @@ public class TimeUtils {
     }
 
     public static String formatOrderUpDayTime(long time) {
-        SimpleDateFormat sDateFormat = new SimpleDateFormat("MM月dd HH:mm",
-                Locale.getDefault());
+        SimpleDateFormat sDateFormat = new SimpleDateFormat("MM月dd HH:mm", Locale.CHINA);
         try {
-            return sDateFormat.format(Long.valueOf(time));
+            return sDateFormat.format(time);
         } catch (Exception e) {
             Logger.e(e, "formatOrderUpDayTime(%d)", time);
         }
@@ -167,10 +165,9 @@ public class TimeUtils {
     }
 
     public static String formatOrderUpDayTimes(long time) {
-        SimpleDateFormat sDateFormat = new SimpleDateFormat("MM月dd HH:mm",
-                Locale.getDefault());
+        SimpleDateFormat sDateFormat = new SimpleDateFormat("MM月dd HH:mm", Locale.CHINA);
         try {
-            return sDateFormat.format(Long.valueOf(time));
+            return sDateFormat.format(time);
         } catch (Exception e) {
             Logger.e(e, "formatOrderUpDayTimes(%d)", time);
         }
@@ -178,10 +175,9 @@ public class TimeUtils {
     }
 
     public static String formatOrderUpDay(long time) {
-        SimpleDateFormat sDateFormat = new SimpleDateFormat("MM月dd日",
-                Locale.getDefault());
+        SimpleDateFormat sDateFormat = new SimpleDateFormat("MM月dd日", Locale.CHINA);
         try {
-            return sDateFormat.format(Long.valueOf(time));
+            return sDateFormat.format(time);
         } catch (Exception e) {
             Logger.e(e, "formatOrderUpDay(%d)", time);
         }
@@ -189,10 +185,9 @@ public class TimeUtils {
     }
 
     public static String formatOrderUpTime(long time) {
-        SimpleDateFormat sDateFormat = new SimpleDateFormat("HH时",
-                Locale.getDefault());
+        SimpleDateFormat sDateFormat = new SimpleDateFormat("HH时", Locale.CHINA);
         try {
-            return sDateFormat.format(Long.valueOf(time));
+            return sDateFormat.format(time);
         } catch (Exception e) {
             Logger.e(e, "formatOrderUpTime(%d)", time);
         }
@@ -200,9 +195,9 @@ public class TimeUtils {
     }
 
     public static String formatOrderUpMinute(long time) {
-        SimpleDateFormat sdf = new SimpleDateFormat("mm分", Locale.getDefault());
+        SimpleDateFormat sdf = new SimpleDateFormat("mm分", Locale.CHINA);
         try {
-            return sdf.format(Long.valueOf(time));
+            return sdf.format(time);
         } catch (Exception e) {
             Logger.e(e, "formatOrderUpMinute(%d)", time);
         }
@@ -217,10 +212,9 @@ public class TimeUtils {
      * @return
      */
     public static String formatTime(String format, long time) {
-        SimpleDateFormat sDateFormat = new SimpleDateFormat(format,
-                Locale.getDefault());
+        SimpleDateFormat sDateFormat = new SimpleDateFormat(format, Locale.CHINA);
         try {
-            return sDateFormat.format(Long.valueOf(time));
+            return sDateFormat.format(time);
         } catch (Exception e) {
             Logger.e(e, "formatTime(%d)", time);
         }
@@ -257,7 +251,7 @@ public class TimeUtils {
      */
     public static String formatdateSSS(long currenttime) {
         Date date = new Date(currenttime);
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS", Locale.CHINA);
         return sdf.format(date);
     }
 
@@ -269,7 +263,7 @@ public class TimeUtils {
      */
     public static String formatdateHHMM(long currenttime) {
         Date date = new Date(currenttime);
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm", Locale.CHINA);
         return sdf.format(date);
     }
 
@@ -283,7 +277,7 @@ public class TimeUtils {
         try {
             long curtime = Long.parseLong(currenttime);
             Date date = new Date(curtime);
-            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm", Locale.CHINA);
             return sdf.format(date);
         } catch (Exception e) {
             return "date";
@@ -298,7 +292,7 @@ public class TimeUtils {
      */
     public static String formatdate_yyyyMMdd(long currenttime) {
         Date date = new Date(currenttime);
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA);
         return sdf.format(date);
     }
 
@@ -310,7 +304,7 @@ public class TimeUtils {
      */
     public static String formatdate_point_yyyyMMdd(long currenttime) {
         Date date = new Date(currenttime);
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd", Locale.CHINA);
         return sdf.format(date);
     }
 
@@ -331,7 +325,7 @@ public class TimeUtils {
      */
     public static String formatdate_Md(long currenttime) {
         Date date = new Date(currenttime);
-        SimpleDateFormat sdf = new SimpleDateFormat("M/d");
+        SimpleDateFormat sdf = new SimpleDateFormat("M/d", Locale.CHINA);
         return sdf.format(date);
     }
 
@@ -343,7 +337,7 @@ public class TimeUtils {
      */
     public static String formatdate_yyyyMMddHHmm(long currenttime) {
         Date date = new Date(currenttime);
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.CHINA);
         return sdf.format(date);
     }
 
@@ -355,7 +349,7 @@ public class TimeUtils {
      */
     public static String formatdateDot(long currenttime) {
         Date date = new Date(currenttime);
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd HH:mm");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd HH:mm", Locale.CHINA);
         return sdf.format(date);
     }
 
@@ -367,7 +361,7 @@ public class TimeUtils {
      */
     public static String formatdate_MMdd_hhmm(long currenttime) {
         Date date = new Date(currenttime);
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM HH:mm");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM HH:mm", Locale.CHINA);
         return sdf.format(date);
     }
 
@@ -394,7 +388,7 @@ public class TimeUtils {
      */
     public static String formatdate_MM_dd_hhmm(long currenttime) {
         Date date = new Date(currenttime);
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM HH:mm");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM HH:mm", Locale.CHINA);
         return sdf.format(date);
     }
 
@@ -402,7 +396,7 @@ public class TimeUtils {
         String result = currenttime + "";
         @SuppressWarnings("deprecation")
         Date date = new Date(result);
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM HH:mm");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM HH:mm", Locale.CHINA);
         return sdf.format(date);
     }
 
@@ -414,7 +408,7 @@ public class TimeUtils {
      */
     public static String formatdate_ddhhmm(long currenttime) {
         Date date = new Date(currenttime);
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/HH:mm");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/HH:mm", Locale.CHINA);
         return sdf.format(date);
     }
 
@@ -426,13 +420,13 @@ public class TimeUtils {
      */
     public static String formatdate_MMddHHmm(long currenttime) {
         Date date = new Date(currenttime);
-        SimpleDateFormat sdf = new SimpleDateFormat("MM月dd HH:mm");
+        SimpleDateFormat sdf = new SimpleDateFormat("MM月dd HH:mm", Locale.CHINA);
         return sdf.format(date);
     }
 
     public static String formatdate_yyyyMM(long currenttime) {
         Date date = new Date(currenttime);
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMM");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMM", Locale.CHINA);
         return sdf.format(date);
     }
 
@@ -461,7 +455,7 @@ public class TimeUtils {
     public static long convertDate2long(String date, String format) {
         try {
             if (!TextUtils.isEmpty(date)) {
-                SimpleDateFormat sf = new SimpleDateFormat(format);
+                SimpleDateFormat sf = new SimpleDateFormat(format, Locale.CHINA);
                 return sf.parse(date).getTime();
             }
         } catch (Exception e) {
@@ -479,7 +473,7 @@ public class TimeUtils {
      */
     public static String convertDate2String(long time, String format) {
         if (time > 0l) {
-            SimpleDateFormat sf = new SimpleDateFormat(format);
+            SimpleDateFormat sf = new SimpleDateFormat(format, Locale.CHINA);
             Date date = new Date(time);
 
             return sf.format(date);
@@ -505,7 +499,7 @@ public class TimeUtils {
             time += minute + res.getString(R.string.minute);
         }
         if (second > 0) {
-            time += String.format("%02d", second) + res.getString(R.string.second);
+            time += String.format(Locale.getDefault(), "%02d", second) + res.getString(R.string.second);
         }
         return time;
     }
@@ -537,8 +531,8 @@ public class TimeUtils {
      */
     public static Calendar getCalendar(String strDate) {
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = null;
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA);
+        Date date;
         try {
             date = sdf.parse(strDate);
         } catch (ParseException e) {
@@ -558,15 +552,13 @@ public class TimeUtils {
      */
     public static String getWeek(Resources res, String strDate) {
         try {
-            Date date = DateFormat.getDateInstance(DateFormat.SHORT,
-                    Locale.CHINESE).parse(strDate);
-            Calendar calendar = Calendar.getInstance(Locale.CHINESE);
-            calendar.setTime(date);
+            Calendar calendar = getCalendar(strDate);
 
             // SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY.
             int week = calendar.get(Calendar.DAY_OF_WEEK);
             return res.getStringArray(R.array.day_of_week)[week];
         } catch (Exception e) {
+            Logger.e(e, "");
             return "";
         }
     }
@@ -640,7 +632,7 @@ public class TimeUtils {
      * @return
      */
     public static long getLong(String datevalue, String datefoemat) {
-        SimpleDateFormat myFormatter = new SimpleDateFormat(datefoemat);
+        SimpleDateFormat myFormatter = new SimpleDateFormat(datefoemat, Locale.CHINA);
         java.util.Date mydate = null;
         try {
             mydate = myFormatter.parse(datevalue);
@@ -658,7 +650,7 @@ public class TimeUtils {
      * @return
      */
     public static String getString(long datevalue, String datefoemat) {
-        SimpleDateFormat sdf = new SimpleDateFormat(datefoemat);
+        SimpleDateFormat sdf = new SimpleDateFormat(datefoemat, Locale.CHINA);
         String formatedDate = sdf.format(datevalue);
         return formatedDate;
     }
@@ -670,17 +662,15 @@ public class TimeUtils {
      * @param format    时间格式
      * @param oldFormat 原时间格式
      */
-    public static String getFormatedDateStringFromDateString(String dateTime,
-                                                             String format, String oldFormat) {
-        Date date = null;
+    public static String getFormatedDateStringFromDateString(String dateTime, String format, String oldFormat) {
+        Date date;
         try {
-            DateFormat dateFormat = new SimpleDateFormat(oldFormat,
-                    Locale.CHINESE);
+            DateFormat dateFormat = new SimpleDateFormat(oldFormat, Locale.CHINA);
             date = dateFormat.parse(dateTime);
         } catch (Exception ex) {
             return null;
         }
-        return new SimpleDateFormat(format, Locale.CHINESE).format(date);
+        return new SimpleDateFormat(format, Locale.CHINA).format(date);
     }
 
     public static long dateToLong(Date date) {
@@ -705,8 +695,7 @@ public class TimeUtils {
      * @return
      */
     public static boolean isTheDay(final Date date, final Date day) {
-        return date.getTime() >= TimeUtils.dayBegin(day).getTime()
-                && date.getTime() <= TimeUtils.dayEnd(day).getTime();
+        return date.getTime() >= TimeUtils.dayBegin(day).getTime() && date.getTime() <= TimeUtils.dayEnd(day).getTime();
     }
 
     /**
