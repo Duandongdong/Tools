@@ -55,10 +55,10 @@ public abstract class HttpClientRequest<RESULT extends HttpClientResponse> exten
     /* 读取数据超时时间 */
     private final int DEFAULT_READ_TIMEOUT = 30 * 1000;
     /* 构造xml请求参数时，通用的xml头 */
-    protected final String XML_HEADER = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
+    private final String XML_HEADER = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
 
     // ============================================================================
-    protected Context mContext;
+    private Context mContext;
 
     /* HTTP request URL. */
     private HttpClientUrl mHttpClientUrl;
@@ -67,7 +67,7 @@ public abstract class HttpClientRequest<RESULT extends HttpClientResponse> exten
     /* Timeout in milliseconds to read data from an established connection or {@code 0} for an infinite timeout. */
     private int mReadTimeout = DEFAULT_READ_TIMEOUT;
     /* HTTP request method. 默认 为 {@link #HTTP_METHOD_POST} */
-    protected String mRequestMethod = HTTP_METHOD_POST;
+    private String mRequestMethod = HTTP_METHOD_POST;
     /* Post 请求参数格式，只支持 {@link #FORMAT_JSON} 和 {@link #FORMAT_XML}。默认为 {@link #FORMAT_JSON} */
     private String mRequestContentFormat = FORMAT_JSON;
     /* Post 简析返回内容格式，只支持 {@link #FORMAT_JSON} 和 {@link #FORMAT_XML}。默认为 {@link #FORMAT_JSON} */
@@ -76,7 +76,7 @@ public abstract class HttpClientRequest<RESULT extends HttpClientResponse> exten
     private boolean mParser = true;
 
     /* 返回xml内容格式名称空间 */
-    protected Map<String, String> mXmlNamespaceDictionaryMap = new HashMap<String, String>();
+    private Map<String, String> mXmlNamespaceDictionaryMap = new HashMap<String, String>();
 
     // ============================================================================
     private HttpRequestFactory mHttpRequestFactory;
