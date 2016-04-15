@@ -104,12 +104,10 @@ public class SystemUtils {
     public static String getSoftver(Context context) {
         String ver = "0";
         try {
-            PackageInfo info = context.getPackageManager().getPackageInfo(
-                    context.getPackageName(), 0);
+            PackageInfo info = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
             String version = info.versionName;
             @SuppressWarnings("unused")
-            String versioncode = String.format(Locale.CHINA, "%03d",
-                    info.versionCode);
+            String versioncode = String.format(Locale.CHINA, "%03d", info.versionCode);
             // 是否需要 versionName 和 versionCode 两个值组合
             ver = version /* + "." + versioncode */;
         } catch (PackageManager.NameNotFoundException e) {
@@ -118,6 +116,19 @@ public class SystemUtils {
             Logger.e(e, "get getSoftver() exception :");
         }
         return ver;
+    }
+
+    public static String getAppVersion(Context context) {
+        String retVal = "";
+        try {
+            PackageManager mgr = context.getPackageManager();
+            PackageInfo info = mgr.getPackageInfo(context.getPackageName(), 0);
+            retVal = info.versionName;
+        } catch (Exception e) {
+            Logger.e(e, "get getAppVersion() exception :");
+        }
+        return retVal;
+
     }
 
 }
