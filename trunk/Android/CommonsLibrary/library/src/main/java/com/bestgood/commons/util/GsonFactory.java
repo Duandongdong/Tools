@@ -17,12 +17,12 @@ public class GsonFactory {
     public static Gson buildOnlyIncludePublicFieldsGson() {
         return new GsonBuilder()
                 .excludeFieldsWithModifiers(
-                        Modifier.PRIVATE,
                         Modifier.PROTECTED,
+                        Modifier.PRIVATE,
                         Modifier.STATIC,
                         Modifier.FINAL,
-                        Modifier.VOLATILE,
-                        Modifier.TRANSIENT)
+                        Modifier.TRANSIENT,
+                        Modifier.VOLATILE)
                 .create();
     }
 
