@@ -2,6 +2,7 @@ package com.bestgood.commons.network.http;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import com.octo.android.robospice.SpiceManager;
 
@@ -15,7 +16,7 @@ import com.octo.android.robospice.SpiceManager;
  * @author ddc
  * @date: Jun 7, 2014 7:31:16 PM
  */
-public abstract class BaseSpiceActivity extends Activity {
+public abstract class BaseSpiceActivity extends AppCompatActivity {
     private RequestManager mRequestManager = new RequestManager(HttpClientService.class);
 
     @Override
