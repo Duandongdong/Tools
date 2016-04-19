@@ -375,6 +375,10 @@ public abstract class HttpClientRequest<RESULT extends HttpClientResponse> exten
         this.mContext = context;
     }
 
+    protected Context getContext() {
+        return mContext;
+    }
+
     /* package */void setHttpRequestFactory(
             HttpRequestFactory httpRequestFactory) {
         this.mHttpRequestFactory = httpRequestFactory;
