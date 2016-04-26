@@ -1,9 +1,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.bestgood.commons">
 
-    <uses-sdk
-        android:minSdkVersion="15"
-        android:targetSdkVersion="22" />
+    <uses-sdk />
+
+    <!--  Normal permissions -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!--Dangerous permissions -->
+    <!--Permission Group PHONE-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
 
     <application
         android:allowBackup="true"
@@ -22,7 +29,7 @@
             android:theme="@android:style/Theme.NoTitleBar"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
 
-        <service android:name="com.amap.api.location.APSService"/>
+        <service android:name="com.amap.api.location.APSService" />
         <service android:name="com.bestgood.commons.network.http.HttpClientService" />
     </application>
 

@@ -1,22 +1,10 @@
 
 package com.bestgood.commons.network.http;
 
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
-
 import android.content.Context;
-import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 
+import com.bestgood.commons.permission.RxPermissionReadUtils;
 import com.bestgood.commons.util.GsonFactory;
 import com.bestgood.commons.util.config.AppConfig;
 import com.bestgood.commons.util.log.Logger;
@@ -29,6 +17,18 @@ import com.google.api.client.http.HttpResponse;
 import com.google.api.client.http.UrlEncodedContent;
 import com.google.gson.Gson;
 import com.octo.android.robospice.request.SpiceRequest;
+
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
 
 /**
  * @author ddc
@@ -448,20 +448,14 @@ public abstract class HttpClientRequest<RESULT extends HttpClientResponse> exten
         return md5StrBuff.toString();
     }
 
-    private String getPhoneNumber(Context context) {
-        TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-        String number = tm.getLine1Number();
-        Logger.t(getClass().getSimpleName()).i("number = %s", number);
-        if (number == null) {
-            number = "0000000000";
-        } else {
-            int length = number.length();
-            if (length > 10) {
-            } else if (length < 10) {
-                number = number + getStringZero(10 - length);
-            }
+    private String getPhoneNumber(final Context context) {
+        String phoneNumber = RxPermissionReadUtils.readPhoneNumber(context);
+        if (TextUtils.isEmpty(phoneNumber)) {
+            phoneNumber = "0000000000";
+        } else if (phoneNumber.length() < 10) {
+            phoneNumber = phoneNumber + getStringZero(10 - phoneNumber.length());
         }
-        return number;
+        return phoneNumber;
     }
 
     private String dealNumber(String pn) {

@@ -1,5 +1,6 @@
 package com.bestgood.commons.util;
 
+import android.Manifest;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.app.ActivityManager.RunningTaskInfo;
@@ -9,9 +10,16 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
+import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 
+import com.bestgood.commons.util.log.Logger;
+import com.tbruyelle.rxpermissions.RxPermissions;
+
 import java.util.List;
+
+import rx.functions.Action0;
+import rx.functions.Action1;
 
 /**
  * AppUtils
@@ -128,7 +136,7 @@ public class CommAppUtils {
      * @param context
      * @param mobile
      */
-    public static void call(Context context, String mobile) {
+    public static void call(final Context context, final String mobile) {
         if (TextUtils.isEmpty(mobile)) {
             return;
         }
@@ -139,9 +147,31 @@ public class CommAppUtils {
 
         // 直接打电话出去 需要添加打电话权限：
         // <uses-permission android:name="android.permission.CALL_PHONE" />
-        Uri uri = Uri.parse("tel:" + mobile);
-        Intent intent = new Intent(Intent.ACTION_CALL, uri);
-        context.startActivity(intent);
+        RxPermissions.getInstance(context)
+                .request(Manifest.permission.CALL_PHONE)
+                .subscribe(new Action1<Boolean>() {
+                    @Override
+                    public void call(Boolean aBoolean) {
+                        Logger.d("onNext:%s", aBoolean);
+                        if (aBoolean) {
+                            if (ContextCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
+                                Uri uri = Uri.parse("tel:" + mobile);
+                                Intent intent = new Intent(Intent.ACTION_CALL, uri);
+                                context.startActivity(intent);
+                            }
+                        }
+                    }
+                }, new Action1<Throwable>() {
+                    @Override
+                    public void call(Throwable throwable) {
+                        Logger.e(throwable, "onError");
+                    }
+                }, new Action0() {
+                    @Override
+                    public void call() {
+                        Logger.d("completed");
+                    }
+                });
     }
 
 
