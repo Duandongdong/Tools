@@ -22,4 +22,12 @@ public class AppConfig {
     public static boolean isPark() {
         return BuildConfig.applicationCode == APPLICATION_PARK;
     }
+
+    public static boolean isRequestEncrypt() {
+        return false;
+    }
+
+    public static boolean isResponseDecrypt() {
+        return !isPark();
+    }
 }

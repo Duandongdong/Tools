@@ -6,23 +6,23 @@ import android.os.Bundle;
 /**
  * Created by dengdingchun on 15/10/24.
  */
-public class BaseSpiceFragment extends Fragment {
+public abstract class AbsSpiceFragment extends Fragment {
 
-    private RequestManager mRequestManager = new RequestManager(HttpClientService.class);
+    private HttpRequestManager mHttpRequestManager = new HttpRequestManager(HttpClientService.class);
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mRequestManager.start(getActivity());
+        mHttpRequestManager.start(getActivity());
     }
 
     @Override
     public void onDestroy() {
-        mRequestManager.shouldStop();
+        mHttpRequestManager.shouldStop();
         super.onDestroy();
     }
 
-    public RequestManager getRequestManager() {
-        return mRequestManager;
+    public HttpRequestManager getRequestManager() {
+        return mHttpRequestManager;
     }
 }

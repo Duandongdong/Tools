@@ -35,25 +35,25 @@ public class RxPermissionReadUtils {
                 .subscribe(new Action1<Boolean>() {
                     @Override
                     public void call(Boolean aBoolean) {
-                        Logger.d("onNext:%s", aBoolean);
+                        //Logger.d("onNext:%s", aBoolean);
                         if (aBoolean) {
                             if (ContextCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
                                 TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
                                 wrap.phoneNumber = tm.getLine1Number();
-                                Logger.i("wrap.phoneNumber = %s", wrap.phoneNumber);
+                                //Logger.i("wrap.phoneNumber = %s", wrap.phoneNumber);
                             }
                         }
                     }
                 }, new Action1<Throwable>() {
                     @Override
                     public void call(Throwable throwable) {
-                        Logger.e(throwable, "onError");
+                        //Logger.e(throwable, "onError");
                         countDownLatch.countDown();
                     }
                 }, new Action0() {
                     @Override
                     public void call() {
-                        Logger.d("completed");
+                        //Logger.d("completed");
                         countDownLatch.countDown();
                     }
                 });

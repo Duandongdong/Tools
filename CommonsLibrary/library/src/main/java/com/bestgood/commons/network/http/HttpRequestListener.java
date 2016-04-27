@@ -11,6 +11,6 @@ import com.octo.android.robospice.request.listener.RequestProgressListener;
  * @author ddc
  * @date: Jun 15, 2014 1:03:08 AM
  */
-public interface HttpRequestListener<RESULT extends HttpClientResponse> extends
-        RequestListener<RESULT>, RequestProgressListener {
+public interface HttpRequestListener<RESULT extends AbsHttpResponse> extends RequestListener<RESULT>, RequestProgressListener {
+
 }
