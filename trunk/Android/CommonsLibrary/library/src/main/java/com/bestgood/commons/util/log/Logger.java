@@ -99,6 +99,13 @@ public final class Logger {
 
     }
 
+    public static void e(Throwable throwable) {
+        if (isDebuggable()) {
+            PRINTER.generateTag(Utils.generateTag());
+            PRINTER.e(throwable, "");
+        }
+    }
+
     public static void e(Throwable throwable, String message, Object... args) {
         if (isDebuggable()) {
             PRINTER.generateTag(Utils.generateTag());

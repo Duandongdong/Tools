@@ -1,5 +1,6 @@
 //include ':sample', ':library'
 include ':CommonsLibrary'
 project(':CommonsLibrary').projectDir = new File(settingsDir, 'library')
+
 include ':CommonsLibrarySample'
 project(':CommonsLibrarySample').projectDir = new File(settingsDir, 'sample')

@@ -54,6 +54,29 @@
     @org.simpleframework.xml.* <init>(...);
 }
 
+#https://github.com/artem-zinnatullin/RxJavaProGuardRules
+-dontwarn sun.misc.**
+-keepclassmembers class rx.internal.util.unsafe.*ArrayQueue*Field* {
+   long producerIndex;
+   long consumerIndex;
+}
+-keepclassmembers class rx.internal.util.unsafe.BaseLinkedQueueProducerNodeRef {
+    rx.internal.util.atomic.LinkedQueueNode producerNode;
+}
+-keepclassmembers class rx.internal.util.unsafe.BaseLinkedQueueConsumerNodeRef {
+    rx.internal.util.atomic.LinkedQueueNode consumerNode;
+}
+
+-dontwarn com.tbruyelle.rxpermissions.**
+-keep class com.tbruyelle.rxpermissions.** { *; }
+
+-dontwarn rx.android.**
+-keep class rx.android.** { *; }
+
+-dontwarn com.jakewharton.rxbinding.**
+-keep class com.jakewharton.rxbinding.** { *; }
+
+
 
 #http://jakewharton.github.io/butterknife/index.html
 -dontwarn butterknife.internal.**

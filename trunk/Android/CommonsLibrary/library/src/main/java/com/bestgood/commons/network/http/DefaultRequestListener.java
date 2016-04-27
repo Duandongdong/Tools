@@ -11,7 +11,7 @@ import com.octo.android.robospice.request.listener.RequestProgress;
  * @author ddc
  * @date: Jun 15, 2014 1:15:59 AM
  */
-public class DefaultRequestListener<RESULT extends HttpClientResponse> implements HttpRequestListener<RESULT> {
+public class DefaultRequestListener<RESULT extends AbsHttpResponse> implements HttpRequestListener<RESULT> {
 
     @Override
     public void onRequestSuccess(RESULT result) {

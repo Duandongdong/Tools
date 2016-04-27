@@ -1,21 +1,27 @@
 
 package com.bestgood.commons.network.http;
 
-import com.google.api.client.http.HttpStatusCodes;
+import java.net.HttpURLConnection;
 
 /**
  * @author ddc
  * @date Jun 2, 2014 4:24:09 PM
  */
-public abstract class HttpClientResponse {
+public abstract class AbsHttpResponse {
 
-    /** http 请求 Status code. */
+    /**
+     * http 请求 Status code.
+     */
     protected int mStatusCode;
 
-    /** http 请求 Status message or {@code null}. */
+    /**
+     * http 请求 Status message or {@code null}.
+     */
     protected String mStatusMessage;
 
-    /** 服务器返回的字符串格式，在不需要将返回内容简析为对象时，会以字符串格式存储于mResultStr **/
+    /**
+     * 服务器返回的字符串格式，在不需要将返回内容简析为对象时，会以字符串格式存储于mResultStr
+     **/
     private String mResultStr;
 
     protected void setStatusCode(int statusCode) {
@@ -42,7 +48,11 @@ public abstract class HttpClientResponse {
         this.mResultStr = resultStr;
     }
 
+    /**
+     * @return Returns whether the given HTTP response status code is a success code >= 200 and < 300.
+     */
     public boolean isSuccessStatusCode() {
-        return HttpStatusCodes.isSuccess(mStatusCode);
+        return mStatusCode >= HttpURLConnection.HTTP_OK && mStatusCode < HttpURLConnection.HTTP_MULT_CHOICE;
+
     }
 }

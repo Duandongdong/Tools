@@ -10,9 +10,9 @@ import com.octo.android.robospice.SpiceService;
  * @author ddc
  * @date: Jun 15, 2014 1:49:20 AM
  */
-public class RequestManager extends SpiceManager {
+public class HttpRequestManager extends SpiceManager {
 
-    public RequestManager(Class<? extends SpiceService> spiceServiceClass) {
+    public HttpRequestManager(Class<? extends SpiceService> spiceServiceClass) {
         super(spiceServiceClass);
     }
 }

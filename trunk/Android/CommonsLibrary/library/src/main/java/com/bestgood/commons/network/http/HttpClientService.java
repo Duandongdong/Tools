@@ -5,8 +5,8 @@ import android.app.Application;
 import com.octo.android.robospice.persistence.CacheManager;
 import com.octo.android.robospice.persistence.binary.InFileBitmapObjectPersister;
 import com.octo.android.robospice.persistence.exception.CacheCreationException;
-import com.octo.android.robospice.persistence.googlehttpclient.json.GsonObjectPersisterFactory;
-import com.octo.android.robospice.persistence.googlehttpclient.json.Jackson2ObjectPersisterFactory;
+//import com.octo.android.robospice.persistence.googlehttpclient.json.GsonObjectPersisterFactory;
+//import com.octo.android.robospice.persistence.googlehttpclient.json.Jackson2ObjectPersisterFactory;
 import com.octo.android.robospice.persistence.string.InFileStringObjectPersister;
 
 /**
@@ -28,7 +28,7 @@ public class HttpClientService extends AbsHttpClientService {
         cacheManager.addPersister(inFileStringObjectPersister);
         cacheManager.addPersister(inFileBitmapObjectPersister);
 
-        cacheManager.addPersister(new GsonObjectPersisterFactory(application));
+//        cacheManager.addPersister(new GsonObjectPersisterFactory(application));
         return cacheManager;
     }
 

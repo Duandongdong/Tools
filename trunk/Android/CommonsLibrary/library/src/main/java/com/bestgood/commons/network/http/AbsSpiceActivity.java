@@ -11,23 +11,23 @@ import com.octo.android.robospice.SpiceManager;
  * class offers all subclasses an easy access to a {@link SpiceManager} that is
  * linked to the {@link Activity} lifecycle. Typically, in a new project, you
  * will have to create a base class like this one and copy the content of the
- * {@link BaseSpiceActivity} into your own class.
+ * {@link AbsSpiceActivity} into your own class.
  *
  * @author ddc
  * @date: Jun 7, 2014 7:31:16 PM
  */
-public abstract class BaseSpiceActivity extends AppCompatActivity {
-    private RequestManager mRequestManager = new RequestManager(HttpClientService.class);
+public abstract class AbsSpiceActivity extends AppCompatActivity {
+    private HttpRequestManager mHttpRequestManager = new HttpRequestManager(HttpClientService.class);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mRequestManager.start(this);
+        mHttpRequestManager.start(this);
     }
 
     @Override
     protected void onDestroy() {
-        mRequestManager.shouldStop();
+        mHttpRequestManager.shouldStop();
         super.onDestroy();
     }
 
@@ -43,7 +43,7 @@ public abstract class BaseSpiceActivity extends AppCompatActivity {
         super.onStop();
     }
 
-    public RequestManager getRequestManager() {
-        return mRequestManager;
+    public HttpRequestManager getRequestManager() {
+        return mHttpRequestManager;
     }
 }
