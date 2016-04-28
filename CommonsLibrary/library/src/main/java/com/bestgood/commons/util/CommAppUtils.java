@@ -7,6 +7,7 @@ import android.app.ActivityManager.RunningTaskInfo;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
@@ -17,6 +18,7 @@ import com.bestgood.commons.util.log.Logger;
 import com.tbruyelle.rxpermissions.RxPermissions;
 
 import java.util.List;
+import java.util.Locale;
 
 import rx.functions.Action0;
 import rx.functions.Action1;
@@ -31,6 +33,35 @@ public class CommAppUtils {
 
     private CommAppUtils() {
         throw new AssertionError();
+    }
+
+
+    /**
+     * 获取软件当前的版本号-
+     *
+     * @param context
+     * @return
+     */
+    public static String getVersionName(Context context) {
+        String versionName = "";
+        try {
+            PackageInfo info = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
+            versionName = info.versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            Logger.e(e, "get getSoftver() exception :");
+        }
+        return versionName;
+    }
+
+    public static int getVersionCode(Context context) {
+        int versionCode = 0;
+        try {
+            PackageInfo info = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
+            versionCode = info.versionCode;
+        } catch (Exception e) {
+            Logger.e(e, "get getAppVersion() exception :");
+        }
+        return versionCode;
     }
 
     /**
@@ -108,8 +139,7 @@ public class CommAppUtils {
      * @return
      */
     public static boolean isIntentCallable(Context context, Intent intent) {
-        List<ResolveInfo> list = context.getPackageManager()
-                .queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
+        List<ResolveInfo> list = context.getPackageManager().queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
         return list.size() > 0;
     }
 

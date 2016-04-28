@@ -5,13 +5,13 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bestgood.commons.R;
+import com.bestgood.commons.util.ScreenUtils;
 
 
 /**
@@ -55,19 +55,20 @@ public class AlertDialog extends Dialog {
     }
 
     private void initView() {
+        int screenWidthPixels = ScreenUtils.getScreenWidthPixels(getContext());
+        View dialogView = findViewById(R.id.layout_dialog);
+        ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) dialogView.getLayoutParams();
+        params.width = (int) (screenWidthPixels * 0.8);
+        dialogView.setLayoutParams(params);
+
         TextView messageView = (TextView) findViewById(R.id.txt_message);
-
-
-        DisplayMetrics dm = new DisplayMetrics();
-        getWindow().getWindowManager().getDefaultDisplay().getMetrics(dm);
-        messageView.setLayoutParams(new LinearLayout.LayoutParams((int) (dm.widthPixels * 0.8), LinearLayout
-                .LayoutParams.MATCH_PARENT));
 
         if (!TextUtils.isEmpty(mMessage)) {
             messageView.setText(mMessage);
         }
         if (!TextUtils.isEmpty(mSubMessage)) {
             TextView subMessageView = (TextView) findViewById(R.id.txt_sub_message);
+
             subMessageView.setText(mSubMessage);
             subMessageView.setVisibility(View.VISIBLE);
         }
@@ -81,8 +82,7 @@ public class AlertDialog extends Dialog {
             positive.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mPositiveButtonListener.onClick(AlertDialog.this,
-                            DialogInterface.BUTTON_POSITIVE);
+                    mPositiveButtonListener.onClick(AlertDialog.this, DialogInterface.BUTTON_POSITIVE);
                     dismiss();
                 }
             });
@@ -98,8 +98,7 @@ public class AlertDialog extends Dialog {
 
                 @Override
                 public void onClick(View v) {
-                    mNegativeButtonListener.onClick(AlertDialog.this,
-                            DialogInterface.BUTTON_NEGATIVE);
+                    mNegativeButtonListener.onClick(AlertDialog.this, DialogInterface.BUTTON_NEGATIVE);
                     dismiss();
                 }
             });

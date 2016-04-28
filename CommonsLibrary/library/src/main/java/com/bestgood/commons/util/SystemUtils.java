@@ -7,6 +7,7 @@ import android.os.Build;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 
+import com.bestgood.commons.permission.RxPermissionReadUtils;
 import com.bestgood.commons.util.log.Logger;
 
 import java.util.Locale;
@@ -46,12 +47,12 @@ public class SystemUtils {
         return availableProcessors > max ? max : availableProcessors;
     }
 
+
     /**
      * 获取IMSI号
      */
     public static String getIMSI(Context context) {
-        TelephonyManager mTelephonyMgr = (TelephonyManager) context
-                .getSystemService(Context.TELEPHONY_SERVICE);
+        TelephonyManager mTelephonyMgr = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
         String imsi = mTelephonyMgr.getSubscriberId();
         if (TextUtils.isEmpty(imsi)) {
             imsi = "000000000000000";
@@ -66,9 +67,7 @@ public class SystemUtils {
      * @return
      */
     public static String getIMEI(Context context) {
-        String IMEI = ((TelephonyManager) context
-                .getSystemService(Context.TELEPHONY_SERVICE)).getDeviceId();
-        return IMEI;
+        return RxPermissionReadUtils.readIMEI(context);
     }
 
     public static int getSDKVer() {
@@ -86,8 +85,7 @@ public class SystemUtils {
      * @return
      */
     public static final String getPhoneNumber(Context context) {
-        TelephonyManager tm = (TelephonyManager) context
-                .getSystemService(Context.TELEPHONY_SERVICE);
+        TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
         String number = tm.getLine1Number();
         if (number == null) {
             return "";
@@ -95,40 +93,5 @@ public class SystemUtils {
         return number;
     }
 
-    /**
-     * 获取软件当前的版本号-
-     *
-     * @param context
-     * @return
-     */
-    public static String getSoftver(Context context) {
-        String ver = "0";
-        try {
-            PackageInfo info = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
-            String version = info.versionName;
-            @SuppressWarnings("unused")
-            String versioncode = String.format(Locale.CHINA, "%03d", info.versionCode);
-            // 是否需要 versionName 和 versionCode 两个值组合
-            ver = version /* + "." + versioncode */;
-        } catch (PackageManager.NameNotFoundException e) {
-            Logger.e(e, "get getSoftver() exception :");
-        } catch (Exception e) {
-            Logger.e(e, "get getSoftver() exception :");
-        }
-        return ver;
-    }
-
-    public static String getAppVersion(Context context) {
-        String retVal = "";
-        try {
-            PackageManager mgr = context.getPackageManager();
-            PackageInfo info = mgr.getPackageInfo(context.getPackageName(), 0);
-            retVal = info.versionName;
-        } catch (Exception e) {
-            Logger.e(e, "get getAppVersion() exception :");
-        }
-        return retVal;
-
-    }
 
 }
