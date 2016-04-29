@@ -2,8 +2,13 @@ package com.bestgood.commons.permission;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.provider.Settings;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.telephony.TelephonyManager;
 
 import com.bestgood.commons.util.log.Logger;
@@ -112,5 +117,30 @@ public class RxPermissionReadUtils {
         }
 
         return wrap.imei;
+    }
+
+    public static void dialogPermissHelp(final Context mContext) {
+        AlertDialog dialog = new AlertDialog.Builder(mContext)
+                .setMessage("当前应用缺少必要权限。" + "\n" + "请点击“设置”-“权限”-打开所需权限。" + "\n" + "最后点击两次后退按钮，即可返回。")
+                .setPositiveButton("设置", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        startAppSettings(mContext);
+                    }
+                })
+                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                }).create();
+        dialog.show();
+    }
+
+    // 启动应用的设置
+    public static void startAppSettings(Context mContext) {
+        Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+        intent.setData(Uri.parse("package:" + mContext.getPackageName()));
+        mContext.startActivity(intent);
     }
 }
