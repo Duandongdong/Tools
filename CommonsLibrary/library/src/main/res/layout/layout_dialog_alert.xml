@@ -49,7 +49,7 @@
             android:layout_weight="1"
             android:background="@color/transparent"
             android:gravity="center"
-            android:text="取消"
+            android:text="@string/string_negative"
             android:textColor="@color/dialog_text_color"
             android:visibility="gone" />
 
@@ -70,7 +70,7 @@
             android:layout_weight="1"
             android:background="@color/transparent"
             android:gravity="center"
-            android:text="确定"
+            android:text="@string/string_positive"
             android:textColor="@color/dialog_text_color"
             android:visibility="gone" />
     </LinearLayout>
