@@ -1,6 +1,8 @@
 
 package com.bestgood.commons.network.http;
 
+import com.octo.android.robospice.exception.NetworkException;
+import com.octo.android.robospice.exception.NoNetworkException;
 import com.octo.android.robospice.persistence.exception.SpiceException;
 import com.octo.android.robospice.request.listener.RequestProgress;
 

@@ -104,9 +104,8 @@ public class AlertDialog extends Dialog {
             });
         }
         View divide = findViewById(R.id.divide_line);
-        divide.setVisibility(positive.getVisibility() == View.VISIBLE
-                && negative.getVisibility() == View.VISIBLE ? View.VISIBLE
-                : View.GONE);
+        divide.setVisibility(positive.getVisibility() == View.VISIBLE && negative.getVisibility() == View.VISIBLE
+                ? View.VISIBLE : View.GONE);
     }
 
     public AlertDialog setMessage(String message) {

@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">Commons Library</string>
 
+    <string name="exception_no_network">无网络连接！</string>
+    <string name="exception_network">网络异常,请稍后再试！</string>
+    <string name="exception_server">连接服务器失败！</string>
+
 
     <string name="string_positive">确定</string>
     <string name="string_negative">取消</string>
