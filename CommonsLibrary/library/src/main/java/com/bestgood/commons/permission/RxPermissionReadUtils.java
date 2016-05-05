@@ -48,19 +48,6 @@ public class RxPermissionReadUtils {
                                 countDownLatch.countDown();
                             }
                         }
-//                        , new Action1<Throwable>() {
-//                            @Override
-//                            public void call(Throwable throwable) {
-//                                Logger.e(throwable, "onError");
-//                                countDownLatch.countDown();
-//                            }
-//                        }, new Action0() {
-//                            @Override
-//                            public void call() {
-//                                Logger.d("completed");
-//                                countDownLatch.countDown();
-//                            }
-//                        }
                 );
 
         try {
