@@ -94,10 +94,10 @@ public abstract class AbsHttpRequest<RESULT extends AbsHttpResponse> extends Spi
 
     @Override
     public RESULT loadDataFromNetwork() throws Exception {
-        return excute();
+        return execute();
     }
 
-    protected RESULT excute() throws IOException, InstantiationException, IllegalAccessException {
+    protected RESULT execute() throws IOException, InstantiationException, IllegalAccessException {
 
         String responseStr;
 
@@ -157,6 +157,8 @@ public abstract class AbsHttpRequest<RESULT extends AbsHttpResponse> extends Spi
         conn.setRequestMethod("POST");
         conn.setDoInput(true);
         conn.setDoOutput(true);
+        conn.setConnectTimeout(mConnectTimeout);
+        conn.setReadTimeout(mReadTimeout);
         conn.setRequestProperty("mimatype", mimatype);
         setRequestProperty(conn);
         if (FORMAT_XML.equals(mRequestContentFormat)) {
