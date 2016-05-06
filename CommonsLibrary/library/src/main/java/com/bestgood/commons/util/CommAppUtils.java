@@ -1,6 +1,7 @@
 package com.bestgood.commons.util;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.app.ActivityManager.RunningTaskInfo;
@@ -11,9 +12,11 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 
+import com.bestgood.commons.permission.RxPermissionReadUtils;
 import com.bestgood.commons.util.log.Logger;
 import com.tbruyelle.rxpermissions.RxPermissions;
 
@@ -163,10 +166,10 @@ public class CommAppUtils {
     /**
      * 拨号
      *
-     * @param context
+     * @param activity
      * @param mobile
      */
-    public static void call(final Context context, final String mobile) {
+    public static void call(final Activity activity, final String mobile) {
         if (TextUtils.isEmpty(mobile)) {
             return;
         }
@@ -177,32 +180,22 @@ public class CommAppUtils {
 
         // 直接打电话出去 需要添加打电话权限：
         // <uses-permission android:name="android.permission.CALL_PHONE" />
-        RxPermissions.getInstance(context)
+        RxPermissions.getInstance(activity.getApplicationContext())
                 .request(Manifest.permission.CALL_PHONE)
                 .subscribe(new Action1<Boolean>() {
                     @Override
-                    public void call(Boolean aBoolean) {
-                        Logger.d("onNext:%s", aBoolean);
-                        if (aBoolean) {
-                            if (ContextCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
-                                Uri uri = Uri.parse("tel:" + mobile);
-                                Intent intent = new Intent(Intent.ACTION_CALL, uri);
-                                context.startActivity(intent);
+                    public void call(Boolean granted) {
+                        if (granted) {
+                            Uri uri = Uri.parse("tel:" + mobile);
+                            Intent intent = new Intent(Intent.ACTION_CALL, uri);
+                            activity.startActivity(intent);
+                        } else {
+                            boolean should = ActivityCompat.shouldShowRequestPermissionRationale(activity, Manifest.permission.CALL_PHONE);
+                            if (!should) {
+                                RxPermissionReadUtils.requestPermissionsDialog(activity, "需要拨打电话权限");
                             }
                         }
                     }
-                }, new Action1<Throwable>() {
-                    @Override
-                    public void call(Throwable throwable) {
-                        Logger.e(throwable, "onError");
-                    }
-                }, new Action0() {
-                    @Override
-                    public void call() {
-                        Logger.d("completed");
-                    }
                 });
     }
-
-
 }
