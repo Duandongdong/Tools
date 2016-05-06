@@ -58,7 +58,7 @@ public class AlertDialog extends Dialog {
         int screenWidthPixels = ScreenUtils.getScreenWidthPixels(getContext());
         View dialogView = findViewById(R.id.layout_dialog);
         ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) dialogView.getLayoutParams();
-        params.width = (int) (screenWidthPixels * 0.8);
+        params.width = (int) (screenWidthPixels * 0.9);
         dialogView.setLayoutParams(params);
 
         TextView messageView = (TextView) findViewById(R.id.txt_message);
