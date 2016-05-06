@@ -16,7 +16,7 @@ import com.octo.android.robospice.SpiceManager;
  * @author ddc
  * @date: Jun 7, 2014 7:31:16 PM
  */
-public abstract class AbsSpiceActivity extends AppCompatActivity {
+public abstract class AbsSpiceActivity extends Activity {
     private HttpRequestManager mHttpRequestManager = new HttpRequestManager(HttpClientService.class);
 
     @Override
