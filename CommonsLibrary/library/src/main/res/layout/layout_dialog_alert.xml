@@ -50,7 +50,7 @@
             android:background="@color/transparent"
             android:gravity="center"
             android:text="@string/string_negative"
-            android:textColor="@color/dialog_text_color"
+            android:textColor="@color/alert_dialog_text_color"
             android:visibility="gone" />
 
         <View
@@ -71,7 +71,7 @@
             android:background="@color/transparent"
             android:gravity="center"
             android:text="@string/string_positive"
-            android:textColor="@color/dialog_text_color"
+            android:textColor="@color/alert_dialog_text_color"
             android:visibility="gone" />
     </LinearLayout>
 

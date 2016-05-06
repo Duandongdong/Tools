@@ -26,7 +26,7 @@
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
         <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
-        <item name="android:windowBackground">@drawable/bg_hot_line</item>
+        <item name="android:windowBackground">@drawable/bg_alert_dialog</item>
         <item name="android:windowNoTitle">true</item>
     </style>
 
