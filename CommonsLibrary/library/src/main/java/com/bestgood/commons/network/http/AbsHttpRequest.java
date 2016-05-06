@@ -12,9 +12,9 @@ import com.octo.android.robospice.request.SpiceRequest;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.CharEncoding;
 
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.net.HttpURLConnection;
@@ -173,8 +173,11 @@ public abstract class AbsHttpRequest<RESULT extends AbsHttpResponse> extends Spi
         Logger.t(getClass().getSimpleName()).object(conn.getRequestProperties());
 
 
-        DataOutputStream out = new DataOutputStream(conn.getOutputStream());
-        out.writeBytes(entityContent); //Writes out the string to the underlying output stream as a sequence of bytes
+        //DataOutputStream out = new DataOutputStream(conn.getOutputStream());
+        //out.writeUTF(entityContent);
+        //out.writeBytes(entityContent); //Writes out the string to the underlying output stream as a sequence of bytes
+        OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream(), "utf-8");
+        out.write(entityContent);
         out.flush(); // Flushes the data output stream.
         out.close(); // Closing the output stream.
 
