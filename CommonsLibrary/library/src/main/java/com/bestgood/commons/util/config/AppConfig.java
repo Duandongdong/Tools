@@ -18,9 +18,23 @@ public class AppConfig {
     public static final int APPLICATION_CZGJ = 1;
     public static final int APPLICATION_CZGJ_BIZ = 2;
     public static final int APPLICATION_PARK = 3;
+    public static final int APPLICATION_PARK_CONSUMER = 4;
+
+    public static boolean isCzgj() {
+        return BuildConfig.applicationCode == APPLICATION_CZGJ;
+    }
+
+    public static boolean isCzgjBiz() {
+        return BuildConfig.applicationCode == APPLICATION_CZGJ_BIZ;
+    }
+
 
     public static boolean isPark() {
         return BuildConfig.applicationCode == APPLICATION_PARK;
+    }
+
+    public static boolean isParkConsumer() {
+        return BuildConfig.applicationCode == APPLICATION_PARK_CONSUMER;
     }
 
     public static boolean isRequestEncrypt() {
@@ -28,6 +42,6 @@ public class AppConfig {
     }
 
     public static boolean isResponseDecrypt() {
-        return !isPark();
+        return isCzgj() || isCzgjBiz();
     }
 }
