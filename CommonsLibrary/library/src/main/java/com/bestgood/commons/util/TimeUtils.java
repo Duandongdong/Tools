@@ -164,6 +164,18 @@ public class TimeUtils {
         return "";
     }
 
+    /**
+     * 格式化日期yyyy年MM月dd日 HH:mm
+     *
+     * @param time
+     * @return
+     */
+    public static String formatdate_cyyyyMMddHHmm(long time) {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy年MM月dd日   HH:mm");
+        String str = formatter.format(time);
+        return str;
+    }
+
     public static String formatOrderUpDayTimes(long time) {
         SimpleDateFormat sDateFormat = new SimpleDateFormat("MM月dd HH:mm", Locale.CHINA);
         try {
@@ -340,6 +352,7 @@ public class TimeUtils {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.CHINA);
         return sdf.format(date);
     }
+
 
     /**
      * 格式化日期yyyy.MM.dd HH:mm
