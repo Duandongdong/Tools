@@ -4,7 +4,7 @@ import android.content.Context;
 import android.text.TextUtils;
 
 import com.bestgood.commons.permission.RxPermissionReadUtils;
-import com.bestgood.commons.util.config.AppConfig;
+import com.bestgood.commons.config.AppConfig;
 import com.bestgood.commons.util.log.Logger;
 
 import java.io.UnsupportedEncodingException;

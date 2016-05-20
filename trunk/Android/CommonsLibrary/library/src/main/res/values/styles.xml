@@ -2,14 +2,14 @@
 <resources>
 
     <style name="AppTheme" parent="android:Theme.Holo.Light.NoActionBar">
-        <item name="android:windowBackground">@drawable/bg_activity</item>
-        <item name="android:textColor">@android:color/black</item>
-        <item name="android:textCursorDrawable">@null</item>
+        <!--<item name="android:windowBackground">@drawable/bg_activity</item>-->
+        <!--<item name="android:textColor">@android:color/black</item>-->
+        <!--<item name="android:textCursorDrawable">@null</item>-->
         <!-- ActionBar -->
         <!-- ActionBarSherlock works on Android 2.x-3.x only, on 4.x a native action bar is used. -->
-        <item name="android:actionBarStyle">@style/ActionBar</item>
-        <item name="android:actionModeBackground">@drawable/bg_action_bar</item>
-        <item name="android:actionModeCloseButtonStyle">@style/NoCloseButton</item>
+        <!--<item name="android:actionBarStyle">@style/ActionBar</item>-->
+        <!--<item name="android:actionModeBackground">@drawable/bg_action_bar</item>-->
+        <!--<item name="android:actionModeCloseButtonStyle">@style/NoCloseButton</item>-->
 
         <!-- <item name="actionButtonStyle">@style/CenterActionButton</item>
         <item name="android:actionButtonStyle">@style/CenterActionButton</item> -->

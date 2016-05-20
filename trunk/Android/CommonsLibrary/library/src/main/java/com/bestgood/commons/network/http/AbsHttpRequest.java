@@ -4,7 +4,7 @@ package com.bestgood.commons.network.http;
 import android.content.Context;
 
 import com.bestgood.commons.util.GsonFactory;
-import com.bestgood.commons.util.config.AppConfig;
+import com.bestgood.commons.config.AppConfig;
 import com.bestgood.commons.util.log.Logger;
 import com.google.gson.Gson;
 import com.octo.android.robospice.request.SpiceRequest;
