@@ -1,4 +1,4 @@
-package com.bestgood.commons.util.os;
+package com.bestgood.commons.os;
 
 import android.os.Handler;
 import android.os.Looper;

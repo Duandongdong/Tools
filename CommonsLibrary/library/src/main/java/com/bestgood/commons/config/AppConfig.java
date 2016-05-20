@@ -1,4 +1,4 @@
-package com.bestgood.commons.util.config;
+package com.bestgood.commons.config;
 
 
 import com.bestgood.commons.BuildConfig;
