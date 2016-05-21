@@ -1,7 +1,7 @@
 package com.bestgood.commons.network.http;
 
-import android.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 
 /**
  * Created by dengdingchun on 15/10/24.
