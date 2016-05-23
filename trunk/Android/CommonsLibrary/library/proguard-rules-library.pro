@@ -49,6 +49,13 @@
 # Application classes that will be serialized/deserialized over Gson
 #-keep class com.google.gson.examples.android.model.** { *; }
 
+-keepclassmembers class com.bestgood.commons.ui.multiphotopicker.model.** {
+  public void set*(***);
+  public *** get*();
+  public *** is*();
+  public <fields>;
+ }
+
 ##---------------End: proguard configuration for Gson  ----------
 
 # Needed to keep generic types and @Key annotations accessed via reflection
