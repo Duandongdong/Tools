@@ -56,7 +56,7 @@ dependencies {
     compile 'de.greenrobot:eventbus:2.4.0'
 
     //network start................
-    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.4'
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
     compile 'com.google.code.gson:gson:2.6.2'
     //network end................
 
