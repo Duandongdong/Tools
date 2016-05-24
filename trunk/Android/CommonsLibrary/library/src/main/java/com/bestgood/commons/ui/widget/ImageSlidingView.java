@@ -20,8 +20,6 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.ButterKnife;
-
 
 /**
  * Created by dengdingchun on 15/11/1.
@@ -149,18 +147,16 @@ public class ImageSlidingView extends RelativeLayout {
 
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
-            View view = mInflater.inflate(R.layout.fragment_image_sliding_view, container, false);
-
+            ImageView imageView = (ImageView) mInflater.inflate(R.layout.fragment_image_sliding_view, container, false);
             final ImageSlidingItem item = mList.get(position);
             if (item == null || TextUtils.isEmpty(item.getImageUrl())) {
-                return view;
+                return imageView;
             }
-            ImageView adIv = (ImageView) view.findViewById(R.id.iv_ad);
-            ImageLoader.getInstance().displayImage(item.getImageUrl(), adIv);
+            ImageLoader.getInstance().displayImage(item.getImageUrl(), imageView);
 
 //        view.setBackgroundColor(Color.parseColor("#FF" + String.format("%06d", new Random().nextInt(999999))));
 //        adIv.setBackgroundColor(Color.parseColor("#FF" + String.format("%06d", new Random().nextInt(999999))));
-            view.setOnClickListener(new View.OnClickListener() {
+            imageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (mImageOnClickListener != null) {
@@ -168,8 +164,8 @@ public class ImageSlidingView extends RelativeLayout {
                     }
                 }
             });
-            container.addView(view);
-            return view;
+//            container.addView(imageView);
+            return imageView;
         }
 
         @Override
