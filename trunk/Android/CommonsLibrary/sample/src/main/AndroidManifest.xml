@@ -85,6 +85,47 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".ui.widget.TouchImage.SingleTouchImageViewActivity"
+            android:label="Widget/TouchImage/Single TouchImageView">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.bestgood.commons.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.widget.TouchImage.MirroringExampleActivity"
+            android:label="Widget/TouchImage/Mirroring Example">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.bestgood.commons.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.widget.TouchImage.ViewPagerExampleActivity"
+            android:label="Widget/TouchImage/ViewPager Example">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.bestgood.commons.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.widget.TouchImage.SwitchImageExampleActivity"
+            android:label="Widget/TouchImage/Switch Image Example">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.bestgood.commons.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.widget.TouchImage.SwitchScaleTypeExampleActivity"
+            android:label="Widget/TouchImage/Switch ScaleType Example">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.bestgood.commons.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+
+        <activity
             android:name=".ui.view.WebViewActivity"
             android:label="View/WebView">
             <intent-filter>
@@ -92,7 +133,6 @@
                 <category android:name="com.bestgood.commons.sample.SAMPLE" />
             </intent-filter>
         </activity>
-
 
 
         <!-- CIRCLE INDICATOR -->
@@ -358,8 +398,6 @@
                 <category android:name="com.bestgood.commons.sample.SAMPLE" />
             </intent-filter>
         </activity>
-
-
 
 
         <activity
