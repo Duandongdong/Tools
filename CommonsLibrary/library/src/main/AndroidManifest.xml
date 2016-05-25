@@ -1,42 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.bestgood.commons">
 
     <uses-sdk />
 
-    <!--  Normal permissions -->
+    <!-- Normal permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    >
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
 
-
-    <!--Dangerous permissions -->
-    <!--Permission Group PHONE-->
+    <!-- Dangerous permissions -->
+    <!-- Permission Group PHONE -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
-
 
     <application
         android:allowBackup="true"
         android:label="@string/app_name"
         android:supportsRtl="true">
         <activity
-            android:name="com.bestgood.commons.ui.multiphotopicker.view.ImageZoomActivity"
+            android:name=".ui.multiphotopicker.view.ImageZoomActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:launchMode="singleTop"
             android:theme="@android:style/Theme.NoTitleBar"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
         <activity
-            android:name="com.bestgood.commons.ui.multiphotopicker.view.ImageChooseActivity"
+            android:name=".ui.multiphotopicker.view.ImageChooseActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:launchMode="singleTop"
             android:theme="@android:style/Theme.NoTitleBar"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
+        <activity
+            android:name=".activity.UILTouchImagePagerActivity"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
 
         <service android:name="com.amap.api.location.APSService" />
-        <service android:name="com.bestgood.commons.network.http.HttpClientService" />
+        <service android:name=".network.http.HttpClientService" />
+
+
     </application>
 
 </manifest>

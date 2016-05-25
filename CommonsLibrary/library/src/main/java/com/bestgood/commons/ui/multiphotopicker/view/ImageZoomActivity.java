@@ -59,7 +59,7 @@ public class ImageZoomActivity extends Activity {
             }
         });
 
-        pager = (ViewPager) findViewById(R.id.viewpager);
+        pager = (ViewPager) findViewById(R.id.viewPager);
         pager.setOnPageChangeListener(pageChangeListener);
 
         adapter = new MyPageAdapter(mDataList);

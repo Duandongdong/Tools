@@ -1,4 +1,4 @@
-package com.bestgood.commons.ui.view;
+package com.bestgood.commons.ui.widget;
 
 
 import android.content.Context;

@@ -11,9 +11,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.bestgood.commons.R;
+import com.bestgood.commons.activity.UILTouchImagePagerActivity;
 import com.bestgood.commons.ui.pager.PageIndicator;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -90,7 +92,7 @@ public class ImageSlidingView extends RelativeLayout {
 
     //======================================================================================
 
-    private AdPagerAdapter mAdapter;
+    private ImagePagerAdapter mAdapter;
 
     public <T extends ImageSlidingItem> void initImageView(List<T> list, ImageOnClickListener listener) {
         mViewPager = (ViewPager) findViewById(R.id.viewPager);
@@ -99,7 +101,7 @@ public class ImageSlidingView extends RelativeLayout {
         this.mImageOnClickListener = listener;
 
         if (mAdapter == null) {
-            mAdapter = new AdPagerAdapter(list);
+            mAdapter = new ImagePagerAdapter(list);
             mViewPager.setAdapter(mAdapter);
             mIndicator.setViewPager(mViewPager);
         } else {
@@ -124,12 +126,12 @@ public class ImageSlidingView extends RelativeLayout {
     }
 
 
-    private class AdPagerAdapter<T extends ImageSlidingItem> extends PagerAdapter {
+    private class ImagePagerAdapter<T extends ImageSlidingItem> extends PagerAdapter {
         // Declare Variables
         private List<T> mList;
         private LayoutInflater mInflater;
 
-        public AdPagerAdapter(List<T> list) {
+        public ImagePagerAdapter(List<T> list) {
             this.mList = list == null ? new ArrayList<T>() : new ArrayList<T>(list);
             mInflater = LayoutInflater.from(getContext());
         }
@@ -146,10 +148,11 @@ public class ImageSlidingView extends RelativeLayout {
 
 
         @Override
-        public Object instantiateItem(ViewGroup container, int position) {
-            ImageView imageView = (ImageView) mInflater.inflate(R.layout.fragment_image_sliding_view, container, false);
+        public Object instantiateItem(ViewGroup container, final int position) {
+            ImageView imageView = (ImageView) mInflater.inflate(R.layout.item_image_sliding_view, container, false);
             final ImageSlidingItem item = mList.get(position);
             if (item == null || TextUtils.isEmpty(item.getImageUrl())) {
+                container.addView(imageView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
                 return imageView;
             }
             ImageLoader.getInstance().displayImage(item.getImageUrl(), imageView);
@@ -161,10 +164,13 @@ public class ImageSlidingView extends RelativeLayout {
                 public void onClick(View v) {
                     if (mImageOnClickListener != null) {
                         mImageOnClickListener.onImageItemClick(item);
+                    } else {
+                        UILTouchImagePagerActivity.goImagePagerActivity(getContext(), buildImageUrlList(), position);
                     }
                 }
             });
-//            container.addView(imageView);
+
+            container.addView(imageView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             return imageView;
         }
 
@@ -176,6 +182,17 @@ public class ImageSlidingView extends RelativeLayout {
         public void notifyDataSetChanged(List<T> list) {
             this.mList = list == null ? new ArrayList<T>() : new ArrayList<T>(list);
             super.notifyDataSetChanged();
+        }
+
+        public ArrayList<String> buildImageUrlList() {
+            ArrayList<String> list = new ArrayList<String>();
+            for (ImageSlidingItem item : mList) {
+                if (item == null) {
+                    continue;
+                }
+                list.add(item.getImageUrl());
+            }
+            return list;
         }
     }
 
