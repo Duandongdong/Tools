@@ -28,7 +28,6 @@ import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
@@ -38,9 +37,9 @@ import android.widget.ImageView;
 import android.widget.OverScroller;
 import android.widget.Scroller;
 
-public class TouchImageView extends ImageView {
+import com.bestgood.commons.util.log.Logger;
 
-    private static final String DEBUG = "DEBUG";
+public class TouchImageView extends ImageView {
 
     //
     // SuperMin and SuperMax multipliers. Determine how much the image can be
@@ -63,9 +62,7 @@ public class TouchImageView extends ImageView {
     //
     private Matrix matrix, prevMatrix;
 
-    private static enum State {NONE, DRAG, ZOOM, FLING, ANIMATE_ZOOM}
-
-    ;
+    private enum State {NONE, DRAG, ZOOM, FLING, ANIMATE_ZOOM}
 
     private State state;
 
@@ -276,7 +273,6 @@ public class TouchImageView extends ImageView {
             super.onRestoreInstanceState(bundle.getParcelable("instanceState"));
             return;
         }
-
         super.onRestoreInstanceState(state);
     }
 
@@ -818,7 +814,7 @@ public class TouchImageView extends ImageView {
     }
 
     public interface OnTouchImageViewListener {
-        public void onMove();
+        void onMove();
     }
 
     /**
@@ -1122,7 +1118,6 @@ public class TouchImageView extends ImageView {
      * @author Ortiz
      */
     private class Fling implements Runnable {
-
         CompatScroller scroller;
         int currX, currY;
 
@@ -1146,13 +1141,11 @@ public class TouchImageView extends ImageView {
             if (getImageHeight() > viewHeight) {
                 minY = viewHeight - (int) getImageHeight();
                 maxY = 0;
-
             } else {
                 minY = maxY = startY;
             }
 
-            scroller.fling(startX, startY, (int) velocityX, (int) velocityY, minX,
-                    maxX, minY, maxY);
+            scroller.fling(startX, startY, velocityX, velocityY, minX, maxX, minY, maxY);
             currX = startX;
             currY = startY;
         }
@@ -1266,7 +1259,6 @@ public class TouchImageView extends ImageView {
     private void compatPostOnAnimation(Runnable runnable) {
         if (VERSION.SDK_INT >= VERSION_CODES.JELLY_BEAN) {
             postOnAnimation(runnable);
-
         } else {
             postDelayed(runnable, 1000 / 60);
         }
@@ -1289,6 +1281,6 @@ public class TouchImageView extends ImageView {
     private void printMatrixInfo() {
         float[] n = new float[9];
         matrix.getValues(n);
-        Log.d(DEBUG, "Scale: " + n[Matrix.MSCALE_X] + " TransX: " + n[Matrix.MTRANS_X] + " TransY: " + n[Matrix.MTRANS_Y]);
+        Logger.d("Scale: " + n[Matrix.MSCALE_X] + " TransX: " + n[Matrix.MTRANS_X] + " TransY: " + n[Matrix.MTRANS_Y]);
     }
 }
