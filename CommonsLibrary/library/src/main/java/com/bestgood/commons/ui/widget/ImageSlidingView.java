@@ -162,10 +162,10 @@ public class ImageSlidingView extends RelativeLayout {
             imageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (mImageOnClickListener != null) {
-                        mImageOnClickListener.onImageItemClick(item);
-                    } else {
+                    if (mImageOnClickListener == null) {
                         UILTouchImagePagerActivity.goImagePagerActivity(getContext(), buildImageUrlList(), position);
+                    } else {
+                        mImageOnClickListener.onImageItemClick(item);
                     }
                 }
             });
