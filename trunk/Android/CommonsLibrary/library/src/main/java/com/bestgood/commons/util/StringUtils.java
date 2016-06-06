@@ -22,6 +22,10 @@ public class StringUtils {
         throw new AssertionError();
     }
 
+    public static String formatPriceStr(float price) {
+        return formatPriceStr(String.valueOf(price));
+    }
+
     /**
      * 格式化价格，小数点后有几位就显示几位，
      *
@@ -29,7 +33,7 @@ public class StringUtils {
      * @return
      */
     public static String formatPriceStr(String floatStr) {
-        if (floatStr.indexOf(".") != -1) {
+        if (floatStr.contains(".")) {
             int dian = floatStr.indexOf(".");
             String dianAfter = floatStr.substring(0, dian + 1);
             String afterData = floatStr.replace(dianAfter, "");
@@ -67,7 +71,7 @@ public class StringUtils {
 
     /**
      * is null or its length is 0 or it is made by space
-     * <p/>
+     * <p>
      * <pre>
      * isBlank(null) = true;
      * isBlank(&quot;&quot;) = true;
@@ -87,7 +91,7 @@ public class StringUtils {
 
     /**
      * is null or its length is 0
-     * <p/>
+     * <p>
      * <pre>
      * isEmpty(null) = true;
      * isEmpty(&quot;&quot;) = true;
@@ -115,7 +119,7 @@ public class StringUtils {
 
     /**
      * get length of CharSequence
-     * <p/>
+     * <p>
      * <pre>
      * length(null) = 0;
      * length(\"\") = 0;
@@ -131,7 +135,7 @@ public class StringUtils {
 
     /**
      * null Object to empty string
-     * <p/>
+     * <p>
      * <pre>
      * nullStrToEmpty(null) = &quot;&quot;;
      * nullStrToEmpty(&quot;&quot;) = &quot;&quot;;
@@ -147,7 +151,7 @@ public class StringUtils {
 
     /**
      * capitalize first letter
-     * <p/>
+     * <p>
      * <pre>
      * capitalizeFirstLetter(null)     =   null;
      * capitalizeFirstLetter("")       =   "";
@@ -172,7 +176,7 @@ public class StringUtils {
 
     /**
      * encoded in utf-8
-     * <p/>
+     * <p>
      * <pre>
      * utf8Encode(null)        =   null
      * utf8Encode("")          =   "";
@@ -215,7 +219,7 @@ public class StringUtils {
 
     /**
      * get innerHtml from href
-     * <p/>
+     * <p>
      * <pre>
      * getHrefInnerHtml(null)                                  = ""
      * getHrefInnerHtml("")                                    = ""
@@ -254,7 +258,7 @@ public class StringUtils {
 
     /**
      * process special char in html
-     * <p/>
+     * <p>
      * <pre>
      * htmlEscapeCharsToString(null) = null;
      * htmlEscapeCharsToString("") = "";
@@ -276,7 +280,7 @@ public class StringUtils {
 
     /**
      * transform half width char to full width char
-     * <p/>
+     * <p>
      * <pre>
      * fullWidthToHalfWidth(null) = null;
      * fullWidthToHalfWidth("") = "";
@@ -309,7 +313,7 @@ public class StringUtils {
 
     /**
      * transform full width char to half width char
-     * <p/>
+     * <p>
      * <pre>
      * halfWidthToFullWidth(null) = null;
      * halfWidthToFullWidth("") = "";
