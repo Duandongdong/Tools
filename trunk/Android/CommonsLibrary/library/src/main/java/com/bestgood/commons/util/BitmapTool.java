@@ -39,7 +39,7 @@ public class BitmapTool {
 
     // 960x640/w*h, 拍摄车辆照片压缩后的尺寸
     public static final int TAKE_CAR_PICTURE_WIDTH = 960;
-    public static final int TAKE_CAR_PICTURE_HEIGHT = 640;
+    public static final int TAKE_CAR_PICTURE_HEIGHT = 540;
 
     public static Bitmap read(InputStream ips, Config config) {
         if (maxMem == -1) {
@@ -374,8 +374,7 @@ public class BitmapTool {
             int width_tmp = o.outWidth, height_tmp = o.outHeight;
             int scale = 1;
             while (true) {
-                if (width_tmp / 2 < REQUIRED_SIZE
-                        || height_tmp / 2 < REQUIRED_SIZE)
+                if (width_tmp / 2 < REQUIRED_SIZE || height_tmp / 2 < REQUIRED_SIZE)
                     break;
                 width_tmp /= 2;
                 height_tmp /= 2;

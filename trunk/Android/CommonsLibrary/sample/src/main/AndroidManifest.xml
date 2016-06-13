@@ -45,6 +45,14 @@
 
 
         <activity
+            android:name=".camera.TestCameraTakePictureActivity"
+            android:label="Camera/TestCameraTakePictureActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.bestgood.commons.sample.SAMPLE" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".ui.widget.LineGridViewActivity"
             android:label="Widget/LineGridView">
             <intent-filter>
