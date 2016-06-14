@@ -66,6 +66,7 @@ public class BitmapTool {
         }
         int width = bitmap.getWidth();
         int height = bitmap.getHeight();
+        Logger.d("-------------" + width, height + "----------------");
         // Bitmap bitmap2 = Bitmap.createBitmap(bitmap);
         Bitmap bitmap2 = Bitmap.createBitmap(width, height, Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap2);
@@ -196,9 +197,9 @@ public class BitmapTool {
         // 分别计算图片宽度、高度与目标宽度、高度的比例；取大于等于该比例的最小整数；
         int widthRatio = (int) Math.ceil(imgWidth / (float) targetWidth);
         int heightRatio = (int) Math.ceil(imgHeight / (float) targetHeight);
-
+        Logger.d("-------------" + widthRatio, heightRatio + "----------------");
         opts.inSampleSize = 1;
-        if (widthRatio > 1 || widthRatio > 1) {
+        if (widthRatio > 1 || heightRatio > 1) {
             if (widthRatio > heightRatio) {
                 opts.inSampleSize = widthRatio;
             } else {
@@ -305,6 +306,7 @@ public class BitmapTool {
         // int height = size.y;
 
         // 缩小图片尺寸为固定值
+        //拍照时照片的大小和压缩后照片的大小，比较清晰度
         Bitmap bitmap = BitmapTool.getResizeBitmap(path,
                 TAKE_CAR_PICTURE_WIDTH,
                 TAKE_CAR_PICTURE_HEIGHT);
