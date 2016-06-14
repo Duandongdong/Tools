@@ -49,7 +49,6 @@ public class TakePictureActivity extends Activity {
     private final float PICTURE_HEIGHT = 720;
     private final float PICTURE_RATIO = PICTURE_WIDTH / PICTURE_HEIGHT;
 
-
     enum Orientation {
         OrientationUnknown(-1),
         OrientationPortrait(90),
@@ -67,7 +66,7 @@ public class TakePictureActivity extends Activity {
 
     SurfaceView mSurfaceView;
     ImageView mFlashLightView;
-
+    ImageView takePictureView;
     Camera mCamera;
     OrientationEventListener orientationListener;
 
@@ -80,7 +79,7 @@ public class TakePictureActivity extends Activity {
 
         mSurfaceView = (SurfaceView) findViewById(R.id.surfaceView);
         mFlashLightView = (ImageView) findViewById(R.id.iv_flash_light);
-
+        takePictureView = (ImageView) findViewById(R.id.iv_take_picture);
         enableOrientationChangeListener(); // 启动设备方向监听器
 
         SurfaceHolder holder = mSurfaceView.getHolder();
@@ -176,7 +175,7 @@ public class TakePictureActivity extends Activity {
                     Logger.d(String.valueOf(orientation.rotation));
 
                     Bitmap newBitmap = Bitmap.createBitmap(oldBitmap, 0, 0, oldBitmap.getWidth(), oldBitmap.getHeight(), matrix, true);
-
+                    Logger.d("+++++++++++++++"+oldBitmap.getWidth(),oldBitmap.getHeight()+"+++++++++++++");
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
                     newBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
 
@@ -256,7 +255,7 @@ public class TakePictureActivity extends Activity {
             parameters.setJpegQuality(100); // 设置照片质量
 
             if (parameters.getSupportedFlashModes().contains(Parameters.FLASH_MODE_AUTO)) {
-                parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_AUTO);//自动对焦
+                parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO);//自动对焦
             }
 
             mCamera.setParameters(parameters);

@@ -15,6 +15,7 @@ import com.bestgood.commons.ui.multiphotopicker.event.DeletePictureListEvent;
 import com.bestgood.commons.ui.multiphotopicker.model.ImageItem;
 import com.bestgood.commons.ui.multiphotopicker.util.ImageDisplayer;
 import com.bestgood.commons.ui.multiphotopicker.util.IntentConstants;
+import com.bestgood.commons.ui.widget.TouchImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -106,7 +107,7 @@ public class ImageZoomActivity extends Activity {
             this.dataList = dataList;
             int size = dataList.size();
             for (int i = 0; i != size; i++) {
-                ImageView iv = new ImageView(ImageZoomActivity.this);
+              TouchImageView iv = new TouchImageView(ImageZoomActivity.this);
                 ImageDisplayer.getInstance(ImageZoomActivity.this).displayBmp(iv, null, dataList.get(i).sourcePath, false);
                 iv.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
                 mViews.add(iv);
