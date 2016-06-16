@@ -66,22 +66,22 @@ public class UILTouchImagePagerActivity extends AbsSpiceActivity {
         public ImagePagerAdapter(List<String> list) {
             this.mList = list == null ? new ArrayList<String>() : new ArrayList<>(list);
 
-            this.mList.addAll(Arrays.asList(
-                    "http://h.hiphotos.baidu.com/image/pic/item/8435e5dde71190eff91e51ebcb1b9d16fdfa6019.jpg",
-                    "http://h.hiphotos.baidu.com/image/pic/item/8435e5dde71190eff91e51ebcb1b9d16fdfa6019.jpg",
-                    "http://h.hiphotos.baidu.com/image/pic/item/8435e5dde71190eff91e51ebcb1b9d16fdfa6019.jpg",
-                    "http://a.hiphotos.baidu.com/image/pic/item/9e3df8dcd100baa10541858f4210b912c8fc2e91.jpg",
-                    "http://d.hiphotos.baidu.com/image/pic/item/a08b87d6277f9e2f1c59df3c1a30e924b899f392.jpg",
-                    "http://a.hiphotos.baidu.com/image/pic/item/bd3eb13533fa828b668543d7f81f4134970a5a64.jpg",
-                    "http://f.hiphotos.baidu.com/image/pic/item/d439b6003af33a87844ede2ec35c10385343b5e7.jpg",
-                    "http://b.hiphotos.baidu.com/image/pic/item/6a63f6246b600c33def400fc1f4c510fd9f9a171.jpg",
-                    "http://a.hiphotos.baidu.com/image/pic/item/9e3df8dcd100baa10541858f4210b912c8fc2e91.jpg",
-                    "http://d.hiphotos.baidu.com/image/pic/item/a08b87d6277f9e2f1c59df3c1a30e924b899f392.jpg",
-                    "http://a.hiphotos.baidu.com/image/pic/item/bd3eb13533fa828b668543d7f81f4134970a5a64.jpg",
-                    "http://f.hiphotos.baidu.com/image/pic/item/d439b6003af33a87844ede2ec35c10385343b5e7.jpg",
-                    "http://b.hiphotos.baidu.com/image/pic/item/6a63f6246b600c33def400fc1f4c510fd9f9a171.jpg",
-                    "http://h.hiphotos.baidu.com/image/pic/item/8435e5dde71190eff91e51ebcb1b9d16fdfa6019.jpg"
-            ));
+//            this.mList.addAll(Arrays.asList(
+//                    "http://h.hiphotos.baidu.com/image/pic/item/8435e5dde71190eff91e51ebcb1b9d16fdfa6019.jpg",
+//                    "http://h.hiphotos.baidu.com/image/pic/item/8435e5dde71190eff91e51ebcb1b9d16fdfa6019.jpg",
+//                    "http://h.hiphotos.baidu.com/image/pic/item/8435e5dde71190eff91e51ebcb1b9d16fdfa6019.jpg",
+//                    "http://a.hiphotos.baidu.com/image/pic/item/9e3df8dcd100baa10541858f4210b912c8fc2e91.jpg",
+//                    "http://d.hiphotos.baidu.com/image/pic/item/a08b87d6277f9e2f1c59df3c1a30e924b899f392.jpg",
+//                    "http://a.hiphotos.baidu.com/image/pic/item/bd3eb13533fa828b668543d7f81f4134970a5a64.jpg",
+//                    "http://f.hiphotos.baidu.com/image/pic/item/d439b6003af33a87844ede2ec35c10385343b5e7.jpg",
+//                    "http://b.hiphotos.baidu.com/image/pic/item/6a63f6246b600c33def400fc1f4c510fd9f9a171.jpg",
+//                    "http://a.hiphotos.baidu.com/image/pic/item/9e3df8dcd100baa10541858f4210b912c8fc2e91.jpg",
+//                    "http://d.hiphotos.baidu.com/image/pic/item/a08b87d6277f9e2f1c59df3c1a30e924b899f392.jpg",
+//                    "http://a.hiphotos.baidu.com/image/pic/item/bd3eb13533fa828b668543d7f81f4134970a5a64.jpg",
+//                    "http://f.hiphotos.baidu.com/image/pic/item/d439b6003af33a87844ede2ec35c10385343b5e7.jpg",
+//                    "http://b.hiphotos.baidu.com/image/pic/item/6a63f6246b600c33def400fc1f4c510fd9f9a171.jpg",
+//                    "http://h.hiphotos.baidu.com/image/pic/item/8435e5dde71190eff91e51ebcb1b9d16fdfa6019.jpg"
+//            ));
         }
 
         @Override
