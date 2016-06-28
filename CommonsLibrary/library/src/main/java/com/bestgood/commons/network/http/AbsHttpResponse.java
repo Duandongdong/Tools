@@ -55,4 +55,36 @@ public abstract class AbsHttpResponse {
         return mStatusCode >= HttpURLConnection.HTTP_OK && mStatusCode < HttpURLConnection.HTTP_MULT_CHOICE;
 
     }
+
+    public abstract boolean isSuccess();
+
+    //==============================================================================================
+
+    /**
+     * access_token过期,重新获取
+     *
+     * @return
+     */
+    protected abstract boolean isAccessTokenExpire();
+
+    /**
+     * access_token失效,重新登录
+     *
+     * @return
+     */
+    protected abstract boolean isAccessTokenInvalid();
+
+    /**
+     * refresh_token过期,重新登录
+     *
+     * @return
+     */
+    protected abstract boolean isRefreshTokenExpire();
+
+    /**
+     * refresh_token失效,重新登录
+     *
+     * @return
+     */
+    protected abstract boolean isRefreshTokenInvalid();
 }
