@@ -8,7 +8,7 @@ import android.support.v4.app.Fragment;
  */
 public abstract class AbsSpiceFragment extends Fragment {
 
-    private HttpRequestManager mHttpRequestManager = new HttpRequestManager(HttpClientService.class);
+    private HttpRequestManager mHttpRequestManager = new HttpRequestManager();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

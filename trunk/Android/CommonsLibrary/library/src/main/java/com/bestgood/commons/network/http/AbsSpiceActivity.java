@@ -17,7 +17,7 @@ import com.octo.android.robospice.SpiceManager;
  * @date: Jun 7, 2014 7:31:16 PM
  */
 public abstract class AbsSpiceActivity extends FragmentActivity {
-    private HttpRequestManager mHttpRequestManager = new HttpRequestManager(HttpClientService.class);
+    private HttpRequestManager mHttpRequestManager = new HttpRequestManager();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -22,6 +22,10 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLSocketFactory;
+
+
 /**
  * @author ddc
  * @date: Apr 20, 2014 9:28:39 PM
@@ -116,14 +120,15 @@ public abstract class AbsHttpRequest<RESULT extends AbsHttpResponse> extends Spi
 
 
         responseStr = CryptoUtils.decrypt(responseStr, mimatype);
-        Logger.t(getClass().getSimpleName()).json(responseStr);
 
         RESULT response = getResultType().newInstance();
         if (mParser) {
+            Logger.t(getClass().getSimpleName()).json(responseStr);
             Gson gson = GsonFactory.buildOnlyIncludeExposeAnnotationGson();
             response = gson.fromJson(responseStr, getResultType());
         } else {
             response.setResultStr(responseStr);
+            Logger.t(getClass().getSimpleName()).d(responseStr);
         }
         return response;
     }
@@ -141,7 +146,7 @@ public abstract class AbsHttpRequest<RESULT extends AbsHttpResponse> extends Spi
         conn.setConnectTimeout(mConnectTimeout);
         conn.setReadTimeout(mReadTimeout);
         conn.setRequestProperty("mimatype", mimatype);
-        setRequestProperty(conn);
+        setRequestProperty(mContext, conn);
         conn.connect();
 
         return IOUtils.toString(new InputStreamReader(conn.getInputStream(), CharEncoding.UTF_8));
@@ -160,17 +165,27 @@ public abstract class AbsHttpRequest<RESULT extends AbsHttpResponse> extends Spi
         conn.setConnectTimeout(mConnectTimeout);
         conn.setReadTimeout(mReadTimeout);
         conn.setRequestProperty("mimatype", mimatype);
-        setRequestProperty(conn);
+        setRequestProperty(mContext, conn);
+
+        // use caller-provided custom SslSocketFactory, if any, for HTTPS
+        if ("https".equals(url.getProtocol())) {
+            // 初始化服务器端公钥证书，得到SSLSocketFactory
+            SSLSocketFactory sslSocketFactory = HttpsUtils.getSslSocketFactory(mContext.getAssets().open("server.cer"));
+            ((HttpsURLConnection) conn).setSSLSocketFactory(sslSocketFactory);
+            ((HttpsURLConnection) conn).setHostnameVerifier(HttpsUtils.getHostnameVerifier());
+        }
+
         if (FORMAT_XML.equals(mRequestContentFormat)) {
             conn.setRequestProperty("Content-Type", "application/xml; charset=utf-8");
 
+            Logger.t(getClass().getSimpleName()).object(conn.getRequestProperties());
             Logger.t(getClass().getSimpleName()).xml(entityContent);
         } else if (FORMAT_JSON.equals(mRequestContentFormat)) {
             conn.setRequestProperty("Content-Type", "application/json; charset=utf-8");
 
+            Logger.t(getClass().getSimpleName()).object(conn.getRequestProperties());
             Logger.t(getClass().getSimpleName()).json(entityContent);
         }
-        Logger.t(getClass().getSimpleName()).object(conn.getRequestProperties());
 
 
         //DataOutputStream out = new DataOutputStream(conn.getOutputStream());
@@ -187,9 +202,10 @@ public abstract class AbsHttpRequest<RESULT extends AbsHttpResponse> extends Spi
     /**
      * Sets the value of the specified request header field.
      *
+     * @param context
      * @param conn
      */
-    protected void setRequestProperty(HttpURLConnection conn) {
+    protected void setRequestProperty(Context context, HttpURLConnection conn) {
 
     }
 
@@ -307,9 +323,9 @@ public abstract class AbsHttpRequest<RESULT extends AbsHttpResponse> extends Spi
         this.mContext = context;
     }
 
-    protected Context getContext() {
-        return mContext;
-    }
+//    protected Context getContext() {
+//        return mContext;
+//    }
 
     public void setRequestContentFormat(String requestContentFormat) {
         this.mRequestContentFormat = requestContentFormat;
@@ -344,4 +360,38 @@ public abstract class AbsHttpRequest<RESULT extends AbsHttpResponse> extends Spi
     public void addXmlNamespaceDictionary(String alias, String uri) {
         mXmlNamespaceDictionaryMap.put(alias, uri);
     }
+
+    //==============================================================================================
+
+    /**
+     * 检测本地保存的access_token是否有效
+     *
+     * @param context
+     * @return
+     */
+    protected abstract boolean checkAccessToken(Context context);
+
+    /**
+     * 检测本地保存的refresh_token是否有效
+     *
+     * @param context
+     * @return
+     */
+    protected abstract boolean checkRefreshToken(Context context);
+
+    /**
+     * access_token/refresh_token 失效 或 refresh_token过期,重新登录
+     *
+     * @param context
+     */
+    protected abstract void reLogin(Context context);
+
+    /**
+     * 刷新access_token
+     *
+     * @param requestManager
+     * @param request         当前请求接口的request
+     * @param requestListener 当前请求接口的requestListener
+     */
+    protected abstract void refreshToken(Context context, HttpRequestManager requestManager, AbsHttpRequest request, DefaultRequestListener requestListener);
 }
