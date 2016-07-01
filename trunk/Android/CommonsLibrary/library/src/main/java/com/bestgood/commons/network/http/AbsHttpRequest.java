@@ -71,6 +71,8 @@ public abstract class AbsHttpRequest<RESULT extends AbsHttpResponse> extends Spi
     /* 返回xml内容格式名称空间 */
     private Map<String, String> mXmlNamespaceDictionaryMap = new HashMap<String, String>();
 
+    private String mToken;
+
     // ============================================================================
 
     /**
@@ -361,7 +363,14 @@ public abstract class AbsHttpRequest<RESULT extends AbsHttpResponse> extends Spi
         mXmlNamespaceDictionaryMap.put(alias, uri);
     }
 
-    //==============================================================================================
+    protected String getToken() {
+        return mToken;
+    }
+
+    protected void setToken(String token) {
+        this.mToken = token;
+    }
+//==============================================================================================
 
     /**
      * 检测本地保存的access_token是否有效
@@ -380,18 +389,22 @@ public abstract class AbsHttpRequest<RESULT extends AbsHttpResponse> extends Spi
     protected abstract boolean checkRefreshToken(Context context);
 
     /**
+     * 上一次请求接口是Headers中的access_token和本地存储的access_token是否不一致，可能有变化
+     *
+     * @param context
+     * @return
+     */
+    protected abstract boolean isHeadersAccessTokenDifferent(Context context);
+
+    /**
+     * 刷新access_token/refresh_token Request
+     */
+    protected abstract AbsHttpRequest<RESULT> createRefreshTokenRequest();
+
+    /**
      * access_token/refresh_token 失效 或 refresh_token过期,重新登录
      *
      * @param context
      */
     protected abstract void reLogin(Context context);
-
-    /**
-     * 刷新access_token
-     *
-     * @param requestManager
-     * @param request         当前请求接口的request
-     * @param requestListener 当前请求接口的requestListener
-     */
-    protected abstract void refreshToken(Context context, HttpRequestManager requestManager, AbsHttpRequest request, DefaultRequestListener requestListener);
 }

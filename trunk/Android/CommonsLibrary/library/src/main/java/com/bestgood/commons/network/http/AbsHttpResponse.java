@@ -1,6 +1,8 @@
 
 package com.bestgood.commons.network.http;
 
+import android.content.Context;
+
 import java.net.HttpURLConnection;
 
 /**
@@ -58,6 +60,12 @@ public abstract class AbsHttpResponse {
 
     public abstract boolean isSuccess();
 
+    /**
+     * 获取服务端返回的响应信息
+     *
+     * @return 服务端返回的响应信息
+     */
+    public abstract String getMessage();
     //==============================================================================================
 
     /**
@@ -87,4 +95,11 @@ public abstract class AbsHttpResponse {
      * @return
      */
     protected abstract boolean isRefreshTokenInvalid();
+
+    /**
+     * 保存token
+     *
+     * @param context
+     */
+    public abstract void saveToken(Context context);
 }
