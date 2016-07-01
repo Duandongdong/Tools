@@ -22,6 +22,14 @@ import com.octo.android.robospice.request.listener.RequestProgress;
  */
 public class DialogRequestListener<RESULT extends AbsHttpResponse> extends DefaultRequestListener<RESULT> implements OnCancelListener, OnDismissListener {
 
+    private Context mContext;
+
+    /**
+     * 取消请求时，如果需要取消后台网络请求，需要设置{@link #mManager} 和 {@link #mRequest}
+     */
+    private HttpRequestManager mManager;
+    private AbsHttpRequest mRequest;
+
     private LoadingDialog mDialog;
 
     /**
@@ -97,10 +105,25 @@ public class DialogRequestListener<RESULT extends AbsHttpResponse> extends Defau
         isCanceled = true;
     }
 
-
-    private void dismissDialog() {
+    public void dismissDialog() {
         if (mDialog != null && mDialog.isShowing()) {
             mDialog.dismiss();
         }
+    }
+
+    public HttpRequestManager getManager() {
+        return mManager;
+    }
+
+    public void setManager(HttpRequestManager manager) {
+        this.mManager = manager;
+    }
+
+    public AbsHttpRequest getRequest() {
+        return mRequest;
+    }
+
+    public void setRequest(AbsHttpRequest request) {
+        this.mRequest = request;
     }
 }
