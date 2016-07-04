@@ -219,5 +219,9 @@ public class HttpRequestManager /*extends SpiceManager*/ {
             this.listener = listener;
         }
     }
+
+    public SpiceManager getSpiceManager() {
+        return mSpiceManager;
+    }
 }
 
